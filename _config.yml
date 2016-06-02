@@ -2,3 +2,5 @@ name:  Richard Parry
 markdown:  Kramdown
 email:  richard.w.parry@gmail.com
 github: github.com/daisonp
+
+permalink: /blog/:year/:month/:day/:title
