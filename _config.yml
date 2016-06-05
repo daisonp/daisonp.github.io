@@ -1,6 +1,7 @@
 name:  Richard Parry
 markdown:  Kramdown
-email:  richard.w.parry@gmail.com
-github: github.com/daisonp
+email_username:  richard.w.parry@gmail.com
+github_username: daisonp
+copyright_name: Richard Parry
 
 permalink: /blog/:year/:month/:day/:title
