@@ -1,7 +1,19 @@
-name:  Richard Parry
-markdown:  Kramdown
-email_username:  richard.w.parry@gmail.com
-github_username: daisonp
+# Site settings
+title: Daison P
+header-img: images\3mokeys.jpg
+email: richard.w.parry@gmail.com
 copyright_name: Richard Parry
+description: "Ramblings about software development"
+baseurl: ""
+url: "http://daisonp.github.io/"
+github_username:  daisonp
+email_username:  richard.w.parry@gmail.com
 
-permalink: /blog/:year/:month/:day/:title
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink:  /blog/:year/:month/:day/:title
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
