@@ -1,0 +1,14 @@
+- caption: Tutorials
+  background-image: /images/how-to.jpg
+  url: /tutorials/index.html
+  class: item active
+
+- caption:
+  background-image: /images/code.jpg
+  url: /projects/index.html
+  class: item
+
+- caption:
+  background-image: /images/blog.png
+  url: /blog/index.html
+  class: item
