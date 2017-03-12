@@ -1,0 +1,141 @@
+name: Richard Parry
+profile_img: /img/rp-profile.jpg
+position: Senior Java Developer
+
+contact:
+  - title: 07447 590 655
+    url: tel:07447 590 655
+    font-class: fa-phone
+    target: _self
+  - title: github.com/daisonp
+    url: https://github.com/daisonp/
+    font-class: fa-github
+    target: _blank
+  - title: Google Plus
+    url: https://plus.google.com/102739314995618344469
+    font-class: fa-google-plus
+    target: _blank
+  - title: email
+    url: mailto:richard.w.parry@gmail.com
+    font-class: fa-envelope
+    target: _self
+
+qualifications:
+  - title: BSc (Hons) Computer Studies
+    provider: University of Glamorgan
+  - title: Certified Spring Professional
+    provider: Pivotal
+  - title: SC Cleared until 2022
+    provider: MoD
+
+profile: I am a senior java developer with more than decade’s worth of experience who has been working primarily with the Spring and Hibernate frameworks for the last 5 years in an Agile environment.  I have considerable experience of the full development life cycle using both Agile and Waterfall methodologies along with good analytical, design and problem solving capabilities.
+
+experience:
+    - title: Principal Developer &amp Software Architect
+      company: Capgemini UK plc
+      dates: 2016 - Present
+      detail: bob
+    - title: Principal Developer
+      company: Capgemini UK plc
+      dates: 2015 - 2016
+      details:
+      - paragraph: The technical / development lead on a project to pay subsidies to farmers in Wales, the project is delivered using the Agile methodology incorporating the scrum iterative approach.
+      - paragraph: My main development role on the project is enhancing the client’s internal application,  the solution of which consists of a Java backend system developed with the use of the Spring and hibernate frameworks utilising JSF for the presentation layer and MS SQL Server as the database.
+      - paragraph: My responsibilities as the lead developer incorporates;
+        items:
+          - text: Ensuring that all development tasks within the iteration meet the accounts development standards, which includes automated integration tests to pass predefined acceptance criterias.
+          - text: Assisting with overall system knowledge to the project team and mentoring junior resources on the architecture of the solution as well as general software engineering practices such as TDD.
+          - text: Estimating and assisting in the prioritisation of the workload, identifying areas where additional technical resources may be required.
+          - text: Main development contact for 3rd party suppliers when creating interfaces between systems, this is mainly via SOAP using Spring integration.
+    - title: Deputy Development Manager
+      company: Capgemini UK plc
+      dates: 2013 - 2015
+      details:
+      - paragraph: I was the deputy development manager of the business as usual support and enhancement team on the account.  This role consisted of me being the technical lead with responsibility for preparing the releases, estimating development work and preparing training plans for the team.  I was also involved in identifying the technical resources required by the team and responsible for conducting technical questioning in the interview process.
+      - paragraph: As well the management side of the role I was also the lead developer for the team helping transition project work back into the BAU support team.   As part of this I introduced agile practices into the the team including the use of Kanban, retrospectives and automated testing whilst also informally mentoring the team on the new technologies / frameworks introduced to the account.
+    - title: Java Developer
+      company: Capgemini UK plc
+      dates: 2010 - 2013
+      details:
+      - paragraph: Java / SQL developer on a major transitional project which introduced agile practices to the account.  The project consisted of a refresh of the technical stack used; moving away from a Java Swing front end backed by JDBC calls to SQL Server stored procedures to a Spring, Hibernate and JSF solution.
+      - paragraph: I was involved in all aspects of the solution; creating the new JSF screens to replace the Swing screens, creating the  backend domain classes using hibernate to maintain the data and creating ODM business rules for back end processing.  We also introduced SOAP messaging to a 3rd party system, this was done using the Spring Integration framework.
+    - title: Java Developer
+      company: Capgemini UK plc
+      dates: 2006 - 2010
+      details:
+      - paragraph: Java / SQL developer on a support and enhancement team.  My role was to create bespoke software to meet the clients requirements.  Development was completed using Java Swing, JDBC connections and extensive use of SQL Server Transact stored procedures to maintain the data.
+    - title: Business Intelligence Developer
+      company: Capgemini UK plc
+      dates: 2004 - 2006
+      details:
+      - paragraph: Part of a business intelligence / data warehousing team that was responsible for extracting data from mainframe systems, denormalizing the data and storing it in Oracle databases to be easily queried by the business end users.  The data extraction and reporting was done using the Information Builders suite of products such as Copy Manager / ETL and Focus / WebFocus.
+    - title: Mainframe Developer
+      company: Capgemini UK plc
+      dates: 2002 - 2004
+      details:
+      - paragraph: Employed as part of a support and enhancements team for Corus’s manufacturing and distribution systems.  The job role involved creating and maintaining bespoke software that was running on an IBM mainframe, languages used were; 4GL Natural, Mantis, COBOL and JCL running against DB2, Adabas and Supra databases.
+
+skillsets:
+  - major: Java
+    subskills:
+      - name: Core Java
+        level: 85%
+      - name: Spring Framework
+        level: 80%
+      - name: Spring Integration
+        level: 70%
+      - name: JDBC API
+        level: 80%
+      - name: Hibernate
+        level: 70%
+      - name: Swing
+        level: 80%
+      - name: Java Server Faces
+        level: 65%
+  - major: Testing
+    subskills:
+        - name: JUnit
+          level: 80%
+        - name: DBUnit
+          level: 70%
+        - name: Mocking Frameworks
+          level: 70%
+        - name: SoapUI
+          level: 60%
+  - major: SQL
+    subskills:
+      - name: General SQL
+        level: 90%
+      - name: SQL Server - Transact
+        level: 80%
+      - name: SQL Server - Reporting Services
+        level: 70%
+      - name: SQL Server - Integration Services
+        level: 40%
+  - major: Web UI
+    subskills:
+      - name: HTML / CSS
+        level: 40%
+      - name: Twitter Bootstrap
+        level: 30%
+      - name: AngularJS
+        level: 35%
+      - name: JavaScript
+        level: 55%
+
+
+
+
+# Version Control
+# Subversion (SVN)
+# IBM Rational ClearCase
+# Websphere Application Server
+#
+#
+
+# Build Tools
+# Maven
+# Ant
+# Jenkins CI
+# IBM Operational Decision Manager (ODM)
+# XML /  XSLT (limited) / XSD

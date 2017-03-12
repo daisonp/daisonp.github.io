@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   {% include head.html %}
-  <body id="page-top" class="index">
-    {% include navbar.html %}
-    {% include carousel.html %}
+    <body id="page-top" class="index">
+    {% include navigation.html %}
+    {% include header.html %}
     <div class="container">
-      <section class="content"> {{ content }} </section>
+      {% include tutorials.html %}
+      {% include projects.html %}
       {% include footer.html %}
     </div>
     {% include javascript.html %}
-  </body>
+    </body>
 </html>

@@ -1,11 +1,19 @@
 - name: Testing
-  url: tutorials/testing/index.html
+  description: Introduction software testing practices
+  url: /pages/tutorials/testing/index.html
+  image_url: /img/tutorials/testing.jpg
 
 - name: Spring
-  url: tutorials/spring/index.html
+  description: Spring framework
+  url: /pages/tutorials/spring/index.html
+  image_url: /img/tutorials/spring.jpg
 
 - name: Micro Services
-  url: tutorials/microservices/index.html
+  description: Micros Services - What, Why and How
+  url: /pages/tutorials/microservices/index.html
+  image_url: /img/tutorials/micro.png
 
 - name: SQL
-  url: tutorials/sql/index.html
+  description: SQL
+  url: /pages/tutorials/sql/index.html
+  image_url: /img/tutorials/sql.png

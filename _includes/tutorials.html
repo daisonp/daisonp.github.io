@@ -1,0 +1,31 @@
+{% unless page.display_all == true %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Tutorials </h1>
+    </div>
+</div>
+{% endunless %}
+
+<!-- Tutorials Row -->
+<div class="row {{ page.additional_class }}">
+    {% for tutorial in site.data.tutorials %}
+    <div class="col-md-4 img-portfolio">
+        <a href="{{ tutorial.url | prepend: site.base_url | prepend: site.url }}">
+          <h3>{{ tutorial.name }} </h3>
+          <img class="img-responsive img-hover" src="{{ tutorial.image_url | prepend: site.base_url | prepend: site.url }}" alt="{{ tutorial.name }}">
+          <p>{{ tutorial.description }}</p>
+        </a>
+    </div>
+
+    {% unless page.display_all == true %}
+      {% if forloop.index == 3 %}
+        <div class="col-md-4">
+            <a href="{{ site.baseurl | prepend: site.url }}/pages/tutorials/index.html" class="page-scroll btn btn-xl">Show All</a>
+        </div>
+        {% break %}
+      {% endif %}
+    {% endunless %}
+
+    {% endfor %}
+
+</div>

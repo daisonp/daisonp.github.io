@@ -6,15 +6,43 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Ramblings of a grumpy old developer
+title: Richard Parry - Ramblings of a grumpy old developer
 copyright_name: Richard Parry
-description: > # this means to ignore newlines until "baseurl:"
-  Java - SQL developer
+email: richard.w.parry@gmail.com
+description: Java - Spring - SQL - Javascript - Node
+
+intro:
+  heading: Grumpy old developer
+  lead-in: Ramblings of a
+
+navbar:
+  brand: Daison P
+
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://daisonp.github.io" # the base hostname & protocol for your site
 
-github_username:  daisonp
-email_username: richard.w.parry@gmail.com
+social:
+  - title: atom
+    url: pages/blog/atom.xml
+    font-class: fa-rss
+  - title: bitbucket
+    url: https://bitbucket.org/richard_parry/
+    font-class: fa-bitbucket
+  - title: github
+    url: https://github.com/daisonp/
+    font-class: fa-github
+  - title: google-plus
+    url: https://plus.google.com/102739314995618344469
+    font-class: fa-google-plus
+  - title: linkedin
+    url: http://linkedin.com
+    font-class: fa-linkedin-square
+  - title: email
+    url: mailto:richard.w.parry@gmail.com
+    font-class: fa-envelope
+
+
 
 # Address information
 #address_street:
@@ -25,7 +53,7 @@ email_username: richard.w.parry@gmail.com
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink:  /blog/:year/:month/:day/:title
+permalink:  pretty
 paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
