@@ -9,7 +9,7 @@
 <!-- Tutorials Row -->
 <div class="row {{ page.additional_class }}">
     {% for tutorial in site.data.tutorials %}
-    <div class="col-md-4 img-portfolio">
+    <div class="col-md-3 img-portfolio">
         <a href="{{ tutorial.url | prepend: site.base_url | prepend: site.url }}">
           <h3>{{ tutorial.name }} </h3>
           <img class="img-responsive img-hover rounded-corners" src="{{ tutorial.image_url | prepend: site.base_url | prepend: site.url }}" alt="{{ tutorial.name }}">
@@ -18,8 +18,8 @@
     </div>
 
     {% unless page.display_all == true %}
-      {% if forloop.index == 3 %}
-        <div class="col-md-4">
+      {% if forloop.index == 4 %}
+        <div class="col-md-3">
             <a href="{{ site.baseurl | prepend: site.url }}/pages/tutorials/index.html" class="page-scroll btn btn-xl">Show All</a>
         </div>
         {% break %}

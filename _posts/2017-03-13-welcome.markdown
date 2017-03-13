@@ -1,0 +1,13 @@
+---
+title: Welcome
+subtitle: Graphic Design
+layout: default
+modal-id: 6
+date: 2017-03-13
+thumbnail: roundicons-thumbnail.png
+project-date: March 2017
+client: Start Bootstrap
+category: General
+description: Welcome message.
+
+---

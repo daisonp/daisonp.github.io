@@ -47,3 +47,9 @@ jQuery(document).ready(function($) {
         });
     });
 });
+
+$("#menu-toggle").click(function(e) {
+    console.log("Toggled");
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
