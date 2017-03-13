@@ -1,5 +1,9 @@
 - name: This Site
+  description: The code repository for this site
   url: https://github.com/daisonp/daisonp.github.io
+  image_url: /img/projects/this_site.jpg
 
 - name: Node Web Server
+  description: Simple web server using Node JS
   url: https://github.com/daisonp/web-server
+  image_url: /img/projects/nodejs_logo.png

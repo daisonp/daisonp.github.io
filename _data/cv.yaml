@@ -34,7 +34,8 @@ experience:
     - title: Principal Developer &amp Software Architect
       company: Capgemini UK plc
       dates: 2016 - Present
-      detail: bob
+      details:
+      - paragraph: Description goes here
     - title: Principal Developer
       company: Capgemini UK plc
       dates: 2015 - 2016

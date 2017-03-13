@@ -12,7 +12,7 @@
     <div class="col-md-4 img-portfolio">
         <a href="{{ tutorial.url | prepend: site.base_url | prepend: site.url }}">
           <h3>{{ tutorial.name }} </h3>
-          <img class="img-responsive img-hover" src="{{ tutorial.image_url | prepend: site.base_url | prepend: site.url }}" alt="{{ tutorial.name }}">
+          <img class="img-responsive img-hover rounded-corners" src="{{ tutorial.image_url | prepend: site.base_url | prepend: site.url }}" alt="{{ tutorial.name }}">
           <p>{{ tutorial.description }}</p>
         </a>
     </div>

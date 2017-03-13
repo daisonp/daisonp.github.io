@@ -35,20 +35,10 @@ social:
   - title: google-plus
     url: https://plus.google.com/102739314995618344469
     font-class: fa-google-plus
-  - title: linkedin
-    url: http://linkedin.com
-    font-class: fa-linkedin-square
   - title: email
     url: mailto:richard.w.parry@gmail.com
     font-class: fa-envelope
 
-
-
-# Address information
-#address_street:
-#address_city:
-#address_state:
-#address_zip:
 
 # Build settings
 markdown: kramdown

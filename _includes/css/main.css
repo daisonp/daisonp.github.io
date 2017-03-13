@@ -884,3 +884,7 @@ body {
   color: black;
   text-decoration: none;
 }
+
+.rounded-corners {
+  border-radius: 20px;
+}

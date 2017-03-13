@@ -1,0 +1,31 @@
+{% unless page.display_all == true %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Projects </h1>
+    </div>
+</div>
+{% endunless %}
+
+<!-- Project Row -->
+<div class="row {{ page.additional_class }}">
+    {% for project in site.data.projects %}
+    <div class="col-md-4 img-portfolio">
+        <a href="{{ project.url }}" target="_blank">
+          <h3>{{ project.name }} </h3>
+          <img class="img-responsive img-hover rounded-corners" src="{{ project.image_url | prepend: site.base_url | prepend: site.url }}" alt="{{ project.name }}">
+          <p>{{ project.description }}</p>
+        </a>
+    </div>
+
+    {% unless page.display_all == true %}
+      {% if forloop.index == 3 %}
+        <div class="col-md-4">
+            <a href="{{ site.baseurl | prepend: site.url }}/pages/projects/index.html" class="page-scroll btn btn-xl">Show All</a>
+        </div>
+        {% break %}
+      {% endif %}
+    {% endunless %}
+
+    {% endfor %}
+
+</div>
