@@ -1,56 +1,86 @@
 ---
 layout: default
+data_file: testing
 ---
 <link rel="stylesheet" href="{{ "/css/simple-sidebar.css" | prepend: site.baseurl | prepend: site.url }}">
-  <div id="wrapper" class="extra-large-padding-top">
+<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
+<div class="extra-large-padding-top">
+  {% highlight java  linenos%}
+public class TestClass {
+public TestClass() {
 
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-              <li>
-                  <a href="#">Dashboard</a>
-              </li>
-              <li>
-                  <a href="#">Shortcuts</a>
-              </li>
-              <li>
-                  <a href="#">Overview</a>
-              </li>
-              <li>
-                  <a href="#">Events</a>
-              </li>
-              <li>
-                  <a href="#">About</a>
-              </li>
-              <li>
-                  <a href="#">Services</a>
-              </li>
-              <li>
-                  <a href="#">Contact</a>
-              </li>
-          </ul>
-      </div>
-      <!-- /#sidebar-wrapper -->
-
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <h1>Simple Sidebar</h1>
-                      <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                      <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                  </div>
-              </div>
-          </div>
+}
+}
+  {% endhighlight %}
 
 
-          <div class="container=fluid" id="intro">
-        
-          </div>
-      </div>
-      <!-- /#page-content-wrapper -->
+  <div class="container=fluid tutorial-section" id="intro">
+    <h1>Introduction</h1>
+    <p>Course to cover basic unit testing and the use of mocks and stubs.
+    Database testing manually and dbunit
+    </p>
+    <ol>
+      <li> What and Why? </li>
+      <li> Test Driven Development TDD </li>
+      <li> Junit and TestNG </li>
+    </ol>
+    <li> Software Installation </li>
+      <ol>
+        <li> Eclipse </li>
+        <li> Junit </li>
+          <ol>
+            <li> Manually </li>
+            <li> Maven </li>
+          </ol>
+      </ol>
+  </div>
+
+  <div class="container=fluid tutorial-section" id="junit">
+    <h1>Unit testing via JUnit</h1>
+    <ol>
+      <li> Introduction to unit testing </li>
+
+
+      <li>Creating our first tests (use fizzbuzz)</li>
+        <ol>
+          <li>@Test</li>
+          <li>Assertion</li>
+        </ol>
+      <li>Assertion's</li>
+        <ol>
+          <li>Basic out of the box assertions</li>
+          <li>assertThat with hamcrest</li>
+          <li>Testing for exceptions</li>
+        </ol>
+      <li>Annotations</li>
+        <ol>
+          <li>@Before</li>
+          <li></li>@BeforeClass
+          <li></li>@After
+          <li></li>@AfterClass
+          <li></li>@Ignore
+        </ol>
+    </ol>
 
   </div>
-  <!-- /#wrapper -->
+
+  7) Test Runners @RunWith
+      a) What are they
+      b) Suite
+      c) Paramertized
+
+  8) Code coverage
+     a)  ECLEMMA Eclipse plugin
+     b)  Maven plugin
+
+  9)  Junit functionality not covered
+  Rules, Categories, Theories
+
+
+
+  Section 2 - Stubs and Mock
+
+
+
+
+</div>
