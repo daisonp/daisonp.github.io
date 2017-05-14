@@ -4,76 +4,89 @@ title: Richard Parry - Curriculum Vitae
 ---
 <link rel="stylesheet" href="{{ "/css/cv.css" | prepend: site.baseurl | prepend: site.url }}">
 <div class="wrapper extra-padding-top">
+  <section>
+    <div class="container container-main">
+      <img class="profile-img img-circle" src="{{ site.data.cv.profile_img | prepend: site.baseurl | prepend: site.url }}" alt="{{ site.data.cv.name }} profile" />
 
-    <div class="sidebar-wrapper">
-        <div class="profile-container">
-            <img class="profile img-circle" src="{{ site.data.cv.profile_img | prepend: site.baseurl | prepend: site.url }}" alt="{{ site.data.cv.name }} profile" />
-            <h1 class="name"> {{ site.data.cv.name }}</h1>
-            <h3 class="tagline">{{ site.data.cv.position }}</h3>
+      <header>
+          <h1 class="name"> {{ site.data.cv.name }}</h1>
+          <h3 class="tagline">{{ site.data.cv.position }}</h3>
+          <img src="{{ "/img/cv/line.png" | prepend: site.baseurl | prepend: site.url }}" class="line" alt="">
+      </header>
+
+      <div class="row">
+        <div class="col-md-7">
+          <h2 class="section-title"><i class="fa fa-user"></i> Career Profile</h2>
+          <div class="summary"> <p>{{ site.data.cv.profile }}</p> </div>
+
+          <section class="section summary-section">
+              <h2 class="section-title"><i class="fa fa-university"></i> Qualifications</h2>
+              {% for qual in site.data.cv.qualifications %}
+                <li> {{ qual.title }} - {{ qual.provider }} </li>
+              {% endfor %}
+          </section>
         </div>
-        <div class="contact-container container-block">
-            <ul class="list-unstyled contact-list">
-                {% for contact in site.data.cv.contact %}
-                <li><i class="fa {{ contact.font-class }}"></i><a href="{{ contact.url }}" target="{{ contact.target }}"> {{ contact.title }} </a></li>
-                {% endfor%}
-            </ul>
+        <div class="col-md-5">
+          <h2>Contact Info</h2>
+          <ul class="list-unstyled contact-list">
+              {% for contact in site.data.cv.contact %}
+              <li><i class="fa {{ contact.font-class }}"></i><a href="{{ contact.url }}" target="{{ contact.target }}"> {{ contact.title }} </a></li>
+              {% endfor%}
+          </ul>
         </div>
-    </div>
+      </div>
 
-    <div class="main-wrapper">
-        <section class="section summary-section">
-            <h2 class="section-title"><i class="fa fa-university"></i>Qualifications</h2>
-            {% for qual in site.data.cv.qualifications %}
-              <li> {{ qual.title }} - {{ qual.provider }} </li>
-            {% endfor %}
-        </section>
-
-        <section class="section summary-section">
-            <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>
-            <div class="summary"> <p>{{ site.data.cv.profile }}</p> </div>
-        </section>
-
-        <section class="section experiences-section">
-            <h2 class="section-title"><i class="fa fa-briefcase"></i>Employment History</h2>
-
-            {% for role in site.data.cv.experience %}
-              <div class="item">
-                  <div class="meta">
-                      <div class="upper-row">
-                          <h3 class="job-title">{{ role.title }}</h3>
-                          <div class="time"> {{ role.dates }}</div>
-                      </div>
-                      <div class="company">{{ role.company }}</div>
-                  </div>
-                  <div class="details">
-                     {% for detail in role.details %}
-                        <p>{{ detail.paragraph }}
-                           {% for item in detail.items %}
-                              <li> {{ item.text }} </li>
-                           {% endfor %}
-                         </p>
-                     {% endfor %}
-                  </div>
-              </div>
-            {% endfor %}
-        </section>
-
-        <section class="skills-section section">
-            <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>
-            <div class="skillset">
-                {% for skillset in site.data.cv.skillsets %}
-                  <h3>{{ skillset.major }}</h3>
-                  {% for skill in skillset.subskills %}
-                    <div class="item">
-                        <h4 class="level-title">{{ skill.name }}</h4>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="{{ skill.level }}">  </div>
+      <div class="row">
+        <div class="col-md-7">
+          <section class="section experiences-section">
+              <h2 class="section-title"><i class="fa fa-briefcase"></i> Employment History</h2>
+              {% for role in site.data.cv.experience %}
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">{{ role.title }}</h3>
+                            <div class="time"> {{ role.dates }}</div>
                         </div>
+                        <div class="company">{{ role.company }}</div>
                     </div>
-                  {% endfor %}
-                {% endfor %}
-            </div>
-        </section>
+                    <div class="details">
+                       {% for detail in role.details %}
+                          <p>{{ detail.paragraph }}
+                             {% for item in detail.items %}
+                                <li> {{ item.text }} </li>
+                             {% endfor %}
+                           </p>
+                       {% endfor %}
+                    </div>
+                </div>
+              {% endfor %}
+          </section>
+        </div>
 
-    </div>
+        <div class="col-md-5">
+          <section class="skills-section section">
+              <h2 class="section-title"><i class="fa fa-rocket"></i> Skills &amp; Proficiency</h2>
+              <div class="skillset">
+                  {% for skillset in site.data.cv.skillsets %}
+                    <h3>{{ skillset.major }}</h3>
+                    {% for skill in skillset.subskills %}
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-striped" role="progressbar"
+                               aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                               style="width: {{ skill.level }};">
+                               {{ skill.name }}
+                          </div>
+                      </div>
+                    {% endfor %}
+                  {% endfor %}
+              </div>
+          </section>
+        </div>
+      </div>
+
+
+
+    </div> <!-- end of container -->
+  </section>
+
 </div>

@@ -3,17 +3,17 @@
   url: /pages/tutorials/testing/index.html
   image_url: /img/tutorials/testing.jpg
 
-- name: Spring
-  description: Spring framework
-  url: /pages/tutorials/spring/index.html
-  image_url: /img/tutorials/spring.jpg
+#- name: Spring
+#  description: Spring framework
+#  url: /pages/tutorials/spring/index.html
+#  image_url: /img/tutorials/spring.jpg
 
-- name: Micro Services
-  description: Micros Services - What, Why and How
-  url: /pages/tutorials/microservices/index.html
-  image_url: /img/tutorials/micro.png
+#- name: Micro Services
+#  description: Micros Services - What, Why and How
+#  url: /pages/tutorials/microservices/index.html
+#  image_url: /img/tutorials/micro.png
 
-- name: SQL
-  description: SQL
-  url: /pages/tutorials/sql/index.html
-  image_url: /img/tutorials/sql.png
+#- name: SQL
+#  description: SQL
+#  url: /pages/tutorials/sql/index.html
+#  image_url: /img/tutorials/sql.png

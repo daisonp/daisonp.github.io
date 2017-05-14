@@ -1,0 +1,23 @@
+body {
+  padding-top: 50px;
+}
+
+.extra-padding-top {
+  padding-top: 50px;
+}
+
+.extra-large-padding-top {
+  padding-top: 100px;
+}
+
+.img-portfolio a:hover,
+.img-portfolio a:focus,
+.img-portfolio a:active,
+.img-portfolio .a.active {
+  color: black;
+  text-decoration: none;
+}
+
+.rounded-corners {
+  border-radius: 20px;
+}

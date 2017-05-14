@@ -38,6 +38,9 @@ social:
   - title: email
     url: mailto:richard.w.parry@gmail.com
     font-class: fa-envelope
+  - title: LinkedIn
+    url: http://www.linkedin.com/in/richard-parry-90431b143
+    font-class: fa-linkedin
 
 
 # Build settings

@@ -15,10 +15,14 @@ contact:
     url: https://plus.google.com/102739314995618344469
     font-class: fa-google-plus
     target: _blank
-  - title: email
+  - title: richard.w.parry@gmail.com
     url: mailto:richard.w.parry@gmail.com
     font-class: fa-envelope
     target: _self
+  - title: LinkedIn/Richard Parry
+    url: http://www.linkedin.com/in/richard-parry-90431b143
+    font-class: fa-linkedin
+    target: _blank
 
 qualifications:
   - title: BSc (Hons) Computer Studies
