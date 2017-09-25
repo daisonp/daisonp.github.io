@@ -2,7 +2,7 @@
   description: Introduction software testing practices
   url: /pages/tutorials/testing/index.html
   image_url: /img/tutorials/testing.jpg
-
+  
 - name: Spring
   description: Spring framework
   url: /pages/tutorials/spring/index.html

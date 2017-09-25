@@ -1,0 +1,374 @@
+--- 
+layout: default 
+section: Section 1 - Unit Testing
+---
+<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/tutorial.css" | prepend: site.baseurl | prepend: site.url }}">
+
+<div id="wrapper" class="extra-large-padding-top">
+        
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <h1>{{ page.section }}</h1>
+        <ul class="sidebar-nav">
+            {% for section in site.data.tutorials-testing %}
+                {% if section.heading == page.section %}
+                    {% for subheading in section.sub-sections %}
+                    <li><a href="#{{ subheading.url }}">{{ subheading.heading }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row" id="introduction">
+                <div class="col-lg-12">
+                    <h2>Introduction</h2>
+                    <p class="question">What are unit tests?</p>
+                    <p class="answer">An unit test is simply an automated test of small part of an application, in object-oriented programming this would most commonly be a method, class or interface.</p>
+                    <p class="question">Why do we need them?</p>
+                    <p class="answer">They are required to prove that the unit of code performs functionally as expected, as a bonus they also show the original intent of the code if there is any ambiguity</p>
+                    <p class="question">What is Test Driven Development?</p>
+                    <p class="answer">
+                        <blockquote cite="https://en.wikipedia.org/wiki/Test-driven_development">
+                            <p>
+                            Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only. This is opposed to software development that allows software to be added that is not proven to meet requirements.</p>
+                            <footer class="left-align-footer"><a href="https://en.wikipedia.org/wiki/Test-driven_development">https://en.wikipedia.org/wiki/Test-driven_development</a></footer>
+                        </blockquote>
+                        The typical development cycle used with TDD is;
+                        <ul>
+                            <li>Add a failing test - important to have a failing test to ensure there are no false positives when we run the tests</li>
+                            <li>Run the tests</li>
+                            <li>Write code to pass the test - first iteration of the code may not be the most performant or elegant solution</li>
+                            <li>Run tests</li>
+                            <li>Refactor code - Improve performance and design, remove duplication of code, etc.</li>
+                            <li>Repeat</li>
+                        </ul>
+                    </p>
+                    <p class="question">Other test frameworks</p>
+                    <p class="answer">TestNG, Junit 5</p>
+                </div>
+
+            </div>
+            
+
+            <div class="row" id="maven">
+                <div class="col-lg-12">
+                    <h2>Creating Maven projects</h2>
+                    <ul>
+                        <li>Right click in the project pane and select New --> Maven Project</li>
+                        <li>Project name and location tab - leave 'Create simple project' unticked</li>
+                        <li>Select an archetype tab - Select quickstart</li>
+                        <li>Enter a group id for the artifact tab - Naming of the project.  <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">Naming conventions for projects can be found on the maven site</a>
+                            <ul>
+                                <li>Group id: name of your originstation and project - <strong>org.daisonp.testing</strong></li>
+                                <li>artifact id: name of project / sub project - <strong>fizzbuzz</strong></li>
+                                <li>version: version of the project - leave default</li>
+                                <li>package: defaults to group_id.artifact_id</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>By convention all projects created via Maven follow the same file structure with the production classes in a seperate directory to the tests but both following the same package structure.
+                        <pre>
+fizzbuzz
+├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── org
+│   │           └── daisonp
+│   │               └── testing
+│   │                   └── fizzbuzz
+│   │                       └── App.java
+│   └── test
+│       └── java
+│           └── org
+│               └── daisonp
+│                   └── testing
+│                       └── fizzbuzz
+│                           └── AppTest.java
+                        </pre>
+                    </p>
+    
+                    <br />
+                    <h4 class="tutorial-step">Update Junit version</h4>
+                    <p>Maven projects are controlled with a pom.xml file. From this file we can list any dependencies that are required for the project, maven will then automatically bring in any dependency required by the listed dependency</p>
+
+                    <p>We will update the version of Junit to the latest v4 version by updating the value in line 21 to 4.12</p>
+{% highlight xml linenos %}
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.daisonp.testing</groupId>
+    <artifactId>FizzBuzz</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>FizzBuzz</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+{% endhighlight %}
+                </div>
+            </div>
+
+            <div class="row" id="first-test">
+                <div class="col-lg-12">
+                    <h2>Creating first unit test</h2>
+                    <p>For the first example we will be implementing the FizzBuzz childrens' game, this is commonly used as interviewing exercise for entry level programming jobs.  A full explanation of the game with various implementations can be found at <a href="https://en.wikipedia.org/wiki/Fizz_buzz">https://en.wikipedia.org/wiki/Fizz_buzz</a></p>
+                    <p>The rules of the game are pretty simple; given a number output Fizz if the number is divisable by three, output Buzz if divisable by 5 and output Fizz Buz if divisable by 3 and 5 otherwise output the original number.</p>
+                    
+                    <p>The first step is to create a new class under src/main/java/org/daisonp/testing/ called FizzBuzz.java, this will be just an empty class at the moment
+                    <H5>FizzBuzz.java</H5>
+{% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+public class FizzBuzz {
+
+}
+{% endhighlight %}
+                    </p>
+                    <h4>Creating the Test class</h4>
+                    We can then right click on the file name in the package explorer and select new --> JUnit Test Case which will bring up the 'New JUnit Test Case' screen
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/new-test.png" alt="New JUnit Test Case screen" class="img-responsive img-hover"> 
+                    <p>the only change we need to make on this screen is to change the Source Folder, replace the word 'main' with 'test' so the file is created in the correct directory.</p>
+                    <H5>FizzBuzzTest.java</H5>
+                    {% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FizzBuzzTest {
+
+    @Test
+    public void test() {
+        fail("Not yet implemented");
+    }
+
+}
+                    {% endhighlight %}  
+                    <p>
+                    Once we have the test class we can start to create our tests, any method annotated with @Test will be run by the JUnit framework as a test.
+                    </p>
+                    <p>
+                    Following the TDD development cycle we will start by creating a failing test that checks that a number is returned when FizzBuzz is run for a number that is not divisable by 3 or 5.
+                    </p> 
+
+                    <h4>Adding a failing test</h4>
+                    <H5>FizzBuzzTest.java</H5>
+                    {% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FizzBuzzTest {
+    private static final FizzBuzz FIZZ_BUZZ = new FizzBuzz();
+
+    @Test
+    public void should_return_original_number_when_not_divisable_by_3_or_5() {
+        String result = FIZZ_BUZZ.run(1);
+        assertEquals("1", result);
+    }
+}
+                    {% endhighlight %}   
+                    <p>The first failure for this code is at compile time and not the actual running of the test as the 'run(int)' method does not actually exist on the FizzBuzz class. We can get the IDE to rectify this issue for us by clicking on the red cross on the line in error and selecting the 'Create method run(int) in type FizzBuzz' option, this will create a template mehtod in the FizzBuzz class that returns a null value.</p> 
+                    <p>Now lets looking at the most relevant lines of code in this class
+                        <ul>
+                            <li>Line 7 - It is a common convention to name the class the same as the Class which is being tested with the additional 'Test' suffix on the class name </li>
+                            <li>Line 8 - Create an instance of the class under test - doesn't have to be done as a static variable and in most cases will be create per test</li>
+                            <li>Line 10 - @Test annotation indicates that the following method will be run by the JUnit testing framework</li>
+                            <li>Line 12 - Execution of the method under test storing the return value in the result variable</li>
+                            <li>Line 13 - Assertion checking the returned value matches the expected value, using assertEquals the expected value is the first parameter and the actual value is the second parameter.</li>
+                        </ul>
+                    </p>
+                    <h4>Run the tests</h4>
+                    <p>The test class can be run by right clicking on the test class and selecting 'Run As' --> Junit Test. This will then run the tests and report the outcome in a new JUnit view</p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/failing-unit-test.png" alt="Failing unit test" class="img-responsive img-hover"> 
+                    <h4>Write code to pass the test</h4>
+                    We then change the code in the FizzBuzz.run(int) method to pass the test, this should be the simplest solution at this point and not the whole required functionality
+                    <H5>FizzBuzz.java</H5>
+                    {% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+public class FizzBuzz {
+    public String run(int value) {
+        return String.valueOf(value);
+    }
+}
+                    {% endhighlight %}   
+                    <h4>Rerun the test</h4>
+                    <p>The tests can either be rerun by pressing the 'rerun test' button in the JUnit view or by selecting 'Run as' --> JUnit as done previously.  At this point the tests should pass, if not review the code in FizzBuzz.run(int)
+                    </p>
+                    <h4>Refactor and repeat</h4>
+                    <p>So following the TDD development cycle we have; Added a failing test, run the test, written code to pass the test and re-run the test.  All that is left to do is refactor the code and repeat by the cycle by adding new tests</p>
+                    <p>So just using the @Test annotation and the assertEquals assertion we should be able to repeat this process and create tests to test all the required functionality
+                        <ul>
+                            <li>Input value of 3 outputs a value of Fizz</li>
+                            <li>Input value of 5 outputs a value of Buzz</li>
+                            <li>Input value of 15 outputs a value of FizzBuzz</li>
+                        </ul>
+                    </p>
+                    <p>At the end of this process you may end up with classes that are similar to these</p>
+                    <h5>FizzBuzzTest.java</h5>
+                    {% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FizzBuzzTest {
+    private static final FizzBuzz FIZZ_BUZZ = new FizzBuzz();
+
+    @Test
+    public void should_return_original_number_when_not_divisable_by_3_or_5() {
+        String result = FIZZ_BUZZ.run(1);
+        assertEquals("1", result);
+    }
+    
+    @Test
+    public void should_return_Fizz_when_number_divisable_by_3() {
+        String result = FIZZ_BUZZ.run(3);
+        assertEquals("Fizz", result);
+    }
+    
+    @Test
+    public void should_return_Buzz_when_number_divisable_by_5() {
+        String result = FIZZ_BUZZ.run(5);
+        assertEquals("Buzz", result);
+    }
+    
+    @Test
+    public void should_return_FizzBuzz_when_number_divisable_by_3_and_5() {
+        String result = FIZZ_BUZZ.run(15);
+        assertEquals("FizzBuzz", result);
+    }
+
+}                    
+                    {% endhighlight %} 
+                    <h5>FizzBuzz.java</h5>
+                    {% highlight java linenos %}
+package org.daisonp.testing.fizzbuzz;
+
+public class FizzBuzz {
+    public String run(int value) {
+        StringBuilder sb = new StringBuilder();
+        if (value % 3 == 0) {
+            sb.append("Fizz");
+        } 
+        if (value % 5 == 0) {
+            sb.append("Buzz");
+        }
+        if (sb.length() == 0) {
+            sb.append(value);
+        }
+        return sb.toString();
+    }
+}
+                    {% endhighlight %} 
+                    <p>Screen capture video showing creation of the project and the process of going through the TDD development cycle.</p>
+                    
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/wPQwwQa22xc" frameborder="0" allowfullscreen></iframe>   
+                </div>
+            </div>
+
+            <div class="row" id="assertions">
+                <div class="col-lg-12">
+                    <h2>Assertions</h2>
+                    <p>So far we have only used the assertEquals assertion but there are <a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html">other assertions</a> that we can use</p>
+                    <table class="tutorial-table">
+                        <tr class="tutorial-table"> 
+                            <th class="tutorial-table">Assertion Method</th>
+                            <th class="tutorial-table">Description</th>
+                            <th class="tutorial-table">Usage</th>
+                        </tr>
+                        <tr> 
+                            <td class="tutorial-table">assertTrue</td>
+                            <td class="tutorial-table">blah</td>
+                            <td class="tutorial-table">Usage - bob</td>
+                        </tr>
+                        <tr>
+                            <td>assertFalse</td>
+                            <td>blah</td>
+                            <td>Usage - bob</td>
+                        </tr>
+                    </table>
+                    <ul>
+                        <li>assertTrue / assertFalse</li>
+                        <li>assertNull / assertNotNull</li>
+                        <li>assertionSame / assertNotSame</li>
+                        <li>assertArrayEquals</li>
+                        <li>assertThat</li>
+                    </ul>
+                    
+                </div>
+            </div>
+
+            <div class="row" id="toc">
+                <div class="col-lg-12">
+                    <pre>
+                    
+                            
+                            4) Creating our first tests (use fizzbuzz)
+                               a) @Test
+                               d) Assertion
+                            
+                            5) Assertion's
+                               a) basic out of the box assertions
+                               b) assertThat with hamcrest
+                               c) Testing for exceptions
+                            
+                            6) Annotations
+                            @Before, @BeforeClass, @After, @AfterClass, @Ignore
+                            
+                            7) Test Runners @RunWith
+                                a) What are they
+                                b) Suite
+                                c) Paramertized
+                            
+                            8) Code coverage
+                               a)  ECLEMMA Eclipse plugin
+                               b)  Maven plugin
+                            
+                            9)  Junit functionality not covered
+                            Rules, Categories, Theories
+                            
+                            
+                            
+                            
+                            
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container=fluid" id="intro">
+
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
