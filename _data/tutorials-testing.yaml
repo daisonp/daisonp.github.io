@@ -4,8 +4,6 @@
   sub-sections:
     - heading: Introduction
       url: introduction
-    - heading: Creating Maven Projects
-      url: maven
     - heading: Creating first test
       url: first-test
     - heading: Assertions

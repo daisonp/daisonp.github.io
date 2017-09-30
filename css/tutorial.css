@@ -29,6 +29,8 @@ img {
   width: 600px;
 }
 
-.tutorial-table {
-  border: 1px solid black;
-}
+.no-indent-no-bullets {
+  list-style:none;
+  padding-left:0;
+  padding-top: 0;
+}​

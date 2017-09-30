@@ -1,6 +1,8 @@
 --- 
 layout: default 
 section: Section 1 - Unit Testing
+parent: Testing / QA
+parentUrl: /pages/tutorials/testing/index.html
 ---
 <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
 <link rel="stylesheet" href="{{ "/css/tutorial.css" | prepend: site.baseurl | prepend: site.url }}">
@@ -10,7 +12,7 @@ section: Section 1 - Unit Testing
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <h1>{{ page.section }}</h1>
-        <ul class="sidebar-nav">
+        <ol class="sidebar-nav">
             {% for section in site.data.tutorials-testing %}
                 {% if section.heading == page.section %}
                     {% for subheading in section.sub-sections %}
@@ -18,7 +20,7 @@ section: Section 1 - Unit Testing
                     {% endfor %}
                 {% endif %}
             {% endfor %}
-        </ul>
+        </ol>
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -27,7 +29,7 @@ section: Section 1 - Unit Testing
         <div class="container-fluid">
             <div class="row" id="introduction">
                 <div class="col-lg-12">
-                    <h2>Introduction</h2>
+                    <h2>1. Introduction</h2>
                     <p class="question">What are unit tests?</p>
                     <p class="answer">An unit test is simply an automated test of small part of an application, in object-oriented programming this would most commonly be a method, class or interface.</p>
                     <p class="question">Why do we need them?</p>
@@ -56,102 +58,53 @@ section: Section 1 - Unit Testing
             </div>
             
 
-            <div class="row" id="maven">
+            <div class="row" id="first-test">
                 <div class="col-lg-12">
-                    <h2>Creating Maven projects</h2>
-                    <ul>
-                        <li>Right click in the project pane and select New --> Maven Project</li>
-                        <li>Project name and location tab - leave 'Create simple project' unticked</li>
-                        <li>Select an archetype tab - Select quickstart</li>
-                        <li>Enter a group id for the artifact tab - Naming of the project.  <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">Naming conventions for projects can be found on the maven site</a>
-                            <ul>
-                                <li>Group id: name of your originstation and project - <strong>org.daisonp.testing</strong></li>
-                                <li>artifact id: name of project / sub project - <strong>fizzbuzz</strong></li>
-                                <li>version: version of the project - leave default</li>
-                                <li>package: defaults to group_id.artifact_id</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <p>By convention all projects created via Maven follow the same file structure with the production classes in a seperate directory to the tests but both following the same package structure.
-                        <pre>
-fizzbuzz
+                    <h2>2. Creating first unit test</h2>
+                    <p>For the first example we will be implementing the FizzBuzz childrens' game, this is commonly used as interviewing exercise for entry level programming jobs.  A full explanation of the game with various implementations can be found at <a href="https://en.wikipedia.org/wiki/Fizz_buzz">https://en.wikipedia.org/wiki/Fizz_buzz</a>, the rules are pretty simple; given a number output Fizz if the number is divisable by three, output Buzz if divisable by 5 and output Fizz Buz if divisable by 3 and 5 otherwise output the original number.</p>
+                    
+                    <p>The first step will to be create a new maven project, <a href="../maven/index.html">overview of creating a maven project</a>, setting the properties to;
+                       <ul class="no-indent-no-bullets">
+                            <li>Group id: <strong>org.daisonp</strong></li>
+                            <li>artifact id: <strong>testingexamples</strong></li>
+                            <li>version: <strong>0.0.1-SNAPSHOT</strong></li>
+                            <li>package: <strong>org.daisonp.testingexamples</strong></li>
+                       </ul>
+                       This will create a project with the structure
+                       <pre>
+testingexamples
 ├── pom.xml
 ├── src
 │   ├── main
 │   │   └── java
 │   │       └── org
 │   │           └── daisonp
-│   │               └── testing
-│   │                   └── fizzbuzz
-│   │                       └── App.java
+│   │               └── testingexamples
+│   │                   └── App.java
 │   └── test
 │       └── java
 │           └── org
 │               └── daisonp
-│                   └── testing
-│                       └── fizzbuzz
-│                           └── AppTest.java
+│                   └── testingexamples
+│                       └── AppTest.java
                         </pre>
+                        Update the pom.xml file to use version 4.12 of JUnit, also replace App.java and AppTest.java files with FizzBuzz.java and FizzBuzzTest.java
                     </p>
-    
-                    <br />
-                    <h4 class="tutorial-step">Update Junit version</h4>
-                    <p>Maven projects are controlled with a pom.xml file. From this file we can list any dependencies that are required for the project, maven will then automatically bring in any dependency required by the listed dependency</p>
-
-                    <p>We will update the version of Junit to the latest v4 version by updating the value in line 21 to 4.12</p>
-{% highlight xml linenos %}
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.daisonp.testing</groupId>
-    <artifactId>FizzBuzz</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>FizzBuzz</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-</project>
-{% endhighlight %}
                 </div>
-            </div>
-
-            <div class="row" id="first-test">
-                <div class="col-lg-12">
-                    <h2>Creating first unit test</h2>
-                    <p>For the first example we will be implementing the FizzBuzz childrens' game, this is commonly used as interviewing exercise for entry level programming jobs.  A full explanation of the game with various implementations can be found at <a href="https://en.wikipedia.org/wiki/Fizz_buzz">https://en.wikipedia.org/wiki/Fizz_buzz</a></p>
-                    <p>The rules of the game are pretty simple; given a number output Fizz if the number is divisable by three, output Buzz if divisable by 5 and output Fizz Buz if divisable by 3 and 5 otherwise output the original number.</p>
-                    
-                    <p>The first step is to create a new class under src/main/java/org/daisonp/testing/ called FizzBuzz.java, this will be just an empty class at the moment
+                <div class="col-lg-6">
                     <H5>FizzBuzz.java</H5>
-{% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+                    {% highlight java linenos %}
+package org.daisonp.testingexamples;
 
 public class FizzBuzz {
 
 }
-{% endhighlight %}
-                    </p>
-                    <h4>Creating the Test class</h4>
-                    We can then right click on the file name in the package explorer and select new --> JUnit Test Case which will bring up the 'New JUnit Test Case' screen
-                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/new-test.png" alt="New JUnit Test Case screen" class="img-responsive img-hover"> 
-                    <p>the only change we need to make on this screen is to change the Source Folder, replace the word 'main' with 'test' so the file is created in the correct directory.</p>
+                    {% endhighlight %}
+                </div>
+                <div class="col-lg-6">
                     <H5>FizzBuzzTest.java</H5>
                     {% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+package org.daisonp.testingexamples;
 
 import static org.junit.Assert.*;
 
@@ -166,17 +119,16 @@ public class FizzBuzzTest {
 
 }
                     {% endhighlight %}  
+                </div>
+                <div class="col-lg-12">
                     <p>
-                    Once we have the test class we can start to create our tests, any method annotated with @Test will be run by the JUnit framework as a test.
-                    </p>
-                    <p>
-                    Following the TDD development cycle we will start by creating a failing test that checks that a number is returned when FizzBuzz is run for a number that is not divisable by 3 or 5.
+                    Once we have the test class we can start to create our tests, any method annotated with @Test will be run by the JUnit framework as a test.  Following the TDD development cycle we will start by creating a failing test that checks that a number is returned when FizzBuzz is run for a number that is not divisable by 3 or 5.
                     </p> 
 
                     <h4>Adding a failing test</h4>
                     <H5>FizzBuzzTest.java</H5>
                     {% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+package org.daisonp.testingexamples;
 
 import static org.junit.Assert.*;
 
@@ -209,7 +161,7 @@ public class FizzBuzzTest {
                     We then change the code in the FizzBuzz.run(int) method to pass the test, this should be the simplest solution at this point and not the whole required functionality
                     <H5>FizzBuzz.java</H5>
                     {% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+package org.daisonp.testingexamples;
 
 public class FizzBuzz {
     public String run(int value) {
@@ -232,7 +184,7 @@ public class FizzBuzz {
                     <p>At the end of this process you may end up with classes that are similar to these</p>
                     <h5>FizzBuzzTest.java</h5>
                     {% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+package org.daisonp.testingexamples;
 
 import static org.junit.Assert.*;
 
@@ -269,7 +221,7 @@ public class FizzBuzzTest {
                     {% endhighlight %} 
                     <h5>FizzBuzz.java</h5>
                     {% highlight java linenos %}
-package org.daisonp.testing.fizzbuzz;
+package org.daisonp.testingexamples;
 
 public class FizzBuzz {
     public String run(int value) {
@@ -295,32 +247,11 @@ public class FizzBuzz {
 
             <div class="row" id="assertions">
                 <div class="col-lg-12">
-                    <h2>Assertions</h2>
-                    <p>So far we have only used the assertEquals assertion but there are <a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html">other assertions</a> that we can use</p>
-                    <table class="tutorial-table">
-                        <tr class="tutorial-table"> 
-                            <th class="tutorial-table">Assertion Method</th>
-                            <th class="tutorial-table">Description</th>
-                            <th class="tutorial-table">Usage</th>
-                        </tr>
-                        <tr> 
-                            <td class="tutorial-table">assertTrue</td>
-                            <td class="tutorial-table">blah</td>
-                            <td class="tutorial-table">Usage - bob</td>
-                        </tr>
-                        <tr>
-                            <td>assertFalse</td>
-                            <td>blah</td>
-                            <td>Usage - bob</td>
-                        </tr>
-                    </table>
-                    <ul>
-                        <li>assertTrue / assertFalse</li>
-                        <li>assertNull / assertNotNull</li>
-                        <li>assertionSame / assertNotSame</li>
-                        <li>assertArrayEquals</li>
-                        <li>assertThat</li>
-                    </ul>
+                    <h2>3. Assertions</h2>
+                    <p>So far we have only used the assertEquals assertion from the org.junit.Assert class but there are other<a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html" target="_blank"> assertion methods available in the Assert class</a>, below is an example of some of the various methods</p>
+                    <h5>AssertionTests</h5>
+                    <script src="https://gist.github.com/daisonp/b166ba1210fb2422b113e0108edebc95.js"></script>
+                    
                     
                 </div>
             </div>
@@ -329,10 +260,6 @@ public class FizzBuzz {
                 <div class="col-lg-12">
                     <pre>
                     
-                            
-                            4) Creating our first tests (use fizzbuzz)
-                               a) @Test
-                               d) Assertion
                             
                             5) Assertion's
                                a) basic out of the box assertions

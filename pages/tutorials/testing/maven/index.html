@@ -1,0 +1,85 @@
+--- 
+layout: default 
+---
+
+<div id="wrapper" class="extra-large-padding-top">
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row" id="maven">
+                <div class="col-lg-12">
+                    <h2>Creating Maven projects</h2>
+                    <ul>
+                        <li>Right click in the project pane and select New --> Maven Project</li>
+                        <li>Project name and location tab - leave 'Create simple project' unticked</li>
+                        <li>Select an archetype tab - Select quickstart</li>
+                        <li>Enter a group id for the artifact tab - Naming of the project. <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html"
+                                target="_blank">Naming conventions for projects can be found on the maven site</a>
+                            <ul>
+                                <li>Group id: name of your originstation and project - <strong>org.daisonp.testing</strong></li>
+                                <li>artifact id: name of project / sub project - <strong>fizzbuzz</strong></li>
+                                <li>version: version of the project - leave default</li>
+                                <li>package: defaults to group_id.artifact_id</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>By convention all projects created via Maven follow the same file structure with the production classes
+                        in a seperate directory to the tests but both following the same package structure.
+                        <pre>
+fizzbuzz
+├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── org
+│   │           └── daisonp
+│   │               └── testing
+│   │                   └── fizzbuzz
+│   │                       └── App.java
+│   └── test
+│       └── java
+│           └── org
+│               └── daisonp
+│                   └── testing
+│                       └── fizzbuzz
+│                           └── AppTest.java
+                                </pre>
+                    </p>
+
+                    <br />
+                    <h4 class="tutorial-step">Update Junit version</h4>
+                    <p>Maven projects are controlled with a pom.xml file. From this file we can list any dependencies that are
+                        required for the project, maven will then automatically bring in any dependency required by the listed
+                        dependency</p>
+
+                    <p>We will update the version of Junit to the latest v4 version by updating the value in line 21 to 4.12</p>
+                    {% highlight xml linenos %}
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.daisonp.testing</groupId>
+    <artifactId>FizzBuzz</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>FizzBuzz</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+                    {% endhighlight %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
