@@ -8,33 +8,38 @@
       url: first-test
     - heading: Assertions
       url: assertions
+    - heading: Assumes
+      url: assumes
     - heading: Annotations
       url: annotations
-    - heading: Testing for Exceptions
-      url: exceptions
-    - heading: Test Runners
-      url: test-runners
     - heading: Junit Rules
       url: junit-rules
-    - heading: Junit v5
-      url: junit-5
+    - heading: Test Runners
+      url: test-runners
+    - heading: Features not covered
+      url: not-covered
+
 - section:
-  heading : Section 2 - Extending unit test with Mock / Stubs
+  heading: Section 2 - Static Analysis
+  url: /pages/tutorials/testing/section-2/index.html
+
+- section:
+  heading : Section 3 - Extending unit test with Mock / Stubs
   url : bob
   
 - section:
-  heading : Section 3 - Integration Testing
+  heading : Section 4 - Integration Testing
   url : bob
   
 - section:
-  heading : Section 4 - UI Testing
+  heading : Section 5 - UI Testing
   url : bob
   
 - section:
-  heading : Section 5 - Performance Testing
+  heading : Section 6 - Performance Testing
   url : bob
   
 - section:
-  heading : Section 6 - Security Testing
+  heading : Section 7 - Security Testing
   url : bob
   

@@ -71,54 +71,17 @@ parentUrl: /pages/tutorials/testing/index.html
                             <li>package: <strong>org.daisonp.testingexamples</strong></li>
                        </ul>
                        This will create a project with the structure
-                       <pre>
-testingexamples
-├── pom.xml
-├── src
-│   ├── main
-│   │   └── java
-│   │       └── org
-│   │           └── daisonp
-│   │               └── testingexamples
-│   │                   └── App.java
-│   └── test
-│       └── java
-│           └── org
-│               └── daisonp
-│                   └── testingexamples
-│                       └── AppTest.java
-                        </pre>
+                       <script src="https://gist.github.com/daisonp/22d6607a7a53397e2d421806f1a61bfc.js"></script>
                         Update the pom.xml file to use version 4.12 of JUnit, also replace App.java and AppTest.java files with FizzBuzz.java and FizzBuzzTest.java
                     </p>
                 </div>
                 <div class="col-lg-6">
                     <H5>FizzBuzz.java</H5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-public class FizzBuzz {
-
-}
-                    {% endhighlight %}
+                    <script src="https://gist.github.com/daisonp/6a526aaa8f5fcfa1960c5539b1612306.js"></script>
                 </div>
                 <div class="col-lg-6">
                     <H5>FizzBuzzTest.java</H5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-public class FizzBuzzTest {
-
-    @Test
-    public void test() {
-        fail("Not yet implemented");
-    }
-
-}
-                    {% endhighlight %}  
+                    <script src="https://gist.github.com/daisonp/0ea7f21598b3f0afa59f4ad820501a4e.js"></script>
                 </div>
                 <div class="col-lg-12">
                     <p>
@@ -127,23 +90,7 @@ public class FizzBuzzTest {
 
                     <h4>Adding a failing test</h4>
                     <H5>FizzBuzzTest.java</H5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-public class FizzBuzzTest {
-    private static final FizzBuzz FIZZ_BUZZ = new FizzBuzz();
-
-    @Test
-    public void should_return_original_number_when_not_divisable_by_3_or_5() {
-        String result = FIZZ_BUZZ.run(1);
-        assertEquals("1", result);
-    }
-}
-                    {% endhighlight %}   
+                    <script src="https://gist.github.com/daisonp/00ef9aff493397e13c2c098caee110b2.js"></script>
                     <p>The first failure for this code is at compile time and not the actual running of the test as the 'run(int)' method does not actually exist on the FizzBuzz class. We can get the IDE to rectify this issue for us by clicking on the red cross on the line in error and selecting the 'Create method run(int) in type FizzBuzz' option, this will create a template mehtod in the FizzBuzz class that returns a null value.</p> 
                     <p>Now lets looking at the most relevant lines of code in this class
                         <ul>
@@ -160,15 +107,7 @@ public class FizzBuzzTest {
                     <h4>Write code to pass the test</h4>
                     We then change the code in the FizzBuzz.run(int) method to pass the test, this should be the simplest solution at this point and not the whole required functionality
                     <H5>FizzBuzz.java</H5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-public class FizzBuzz {
-    public String run(int value) {
-        return String.valueOf(value);
-    }
-}
-                    {% endhighlight %}   
+                    <script src="https://gist.github.com/daisonp/ff8b3093a1d9e6665ae73c27fd3bc6a0.js"></script>  
                     <h4>Rerun the test</h4>
                     <p>The tests can either be rerun by pressing the 'rerun test' button in the JUnit view or by selecting 'Run as' --> JUnit as done previously.  At this point the tests should pass, if not review the code in FizzBuzz.run(int)
                     </p>
@@ -183,62 +122,9 @@ public class FizzBuzz {
                     </p>
                     <p>At the end of this process you may end up with classes that are similar to these</p>
                     <h5>FizzBuzzTest.java</h5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-public class FizzBuzzTest {
-    private static final FizzBuzz FIZZ_BUZZ = new FizzBuzz();
-
-    @Test
-    public void should_return_original_number_when_not_divisable_by_3_or_5() {
-        String result = FIZZ_BUZZ.run(1);
-        assertEquals("1", result);
-    }
-    
-    @Test
-    public void should_return_Fizz_when_number_divisable_by_3() {
-        String result = FIZZ_BUZZ.run(3);
-        assertEquals("Fizz", result);
-    }
-    
-    @Test
-    public void should_return_Buzz_when_number_divisable_by_5() {
-        String result = FIZZ_BUZZ.run(5);
-        assertEquals("Buzz", result);
-    }
-    
-    @Test
-    public void should_return_FizzBuzz_when_number_divisable_by_3_and_5() {
-        String result = FIZZ_BUZZ.run(15);
-        assertEquals("FizzBuzz", result);
-    }
-
-}                    
-                    {% endhighlight %} 
+                    <script src="https://gist.github.com/daisonp/305980fbdab06303327b479362fafd62.js"></script>
                     <h5>FizzBuzz.java</h5>
-                    {% highlight java linenos %}
-package org.daisonp.testingexamples;
-
-public class FizzBuzz {
-    public String run(int value) {
-        StringBuilder sb = new StringBuilder();
-        if (value % 3 == 0) {
-            sb.append("Fizz");
-        } 
-        if (value % 5 == 0) {
-            sb.append("Buzz");
-        }
-        if (sb.length() == 0) {
-            sb.append(value);
-        }
-        return sb.toString();
-    }
-}
-                    {% endhighlight %} 
+                    <script src="https://gist.github.com/daisonp/6d3fdd68c0edc6693b09f816b195c3a6.js"></script>
                     <p>Screen capture video showing creation of the project and the process of going through the TDD development cycle.</p>
                     
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/wPQwwQa22xc" frameborder="0" allowfullscreen></iframe>   
@@ -248,54 +134,128 @@ public class FizzBuzz {
             <div class="row" id="assertions">
                 <div class="col-lg-12">
                     <h2>3. Assertions</h2>
-                    <p>So far we have only used the assertEquals assertion from the org.junit.Assert class but there are other<a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html" target="_blank"> assertion methods available in the Assert class</a>, below is an example of some of the various methods</p>
-                    <h5>AssertionTests</h5>
+                    <p>Within the JUnit framework an assertion is used to determine whether a test passes or fails, failing assertions throw <code>AssertionError</code> exceptions which allow the framework to mark a test as failed. So far we have only used the assertEquals assertion from the org.junit.Assert class but there are other<a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html" target="_blank"> assertion methods available in the Assert class</a>, below is an example of some of the various methods</p>
                     <script src="https://gist.github.com/daisonp/b166ba1210fb2422b113e0108edebc95.js"></script>
+                    <p>There are 2 methods not shown these are fail() which simply throws an <code>AssertionError</code> and assertThat() which uses Hamcrest Matchers.</p>
+                    <h4>AssertThat and Hamcrest Matchers</h4>
+
+                    explanation of AssertThat and Matchers goes here
+                </div>
+            </div>
+
+            <div class="row" id="assumes">
+                    <div class="col-lg-12">
+                        <h2>4. Assumes</h2>
+                        
+                    </div>
+                </div>
+
+            <div class="row" id="annotations">
+                <div class="col-lg-12">
+                    <h2>5. Annotations</h2>
+                    <p>In the JUnit framework there are a number of hooks into the running livecycle of the tests where we can supply our own code, these hooks are activated by adding annotations to methods.  The available annotations are</p>
+                    <dl>
+                        <dt>@Test</dt>
+                            <dd>
+                                Marks a method as a test to be run with the JUnit framework, the method that the annotation applies to must be declared as <code>public</code> with a <code>void</code> return type.
+                            </dd>
+                        <dt>@Ignore</dt>
+                            <dd>
+                                Used in conjuntion with <code>@Test</code>, this annotation temporary disables the test but still allows the framework to indicate that there was a test that was not run
+                            </dd>
+                        <dt>@Before</dt>
+                            <dd>
+                                Will run the code in the method before each test is called, the method must be <code>public</code> and return <code>void</code>.
+                            </dd>
+                        <dt>@BeforeClass</dt>
+                            <dd>
+                                Will run the code <strong>ONCE</strong> at the initializion of the test class, the method this annotation is applied to must be <code>public static</code> and have a <code>void</code> return type.  This is commonly used to setup resource intensive operations that are shared between all the tests in the class,such as a database connection.
+                            </dd>
+                        <dt>@After</dt>
+                            <dd>
+                                Runs after each test and is normally used to reset or teardown what is created in a <code>@Before</code> annotated method.  Must be applied to a <code>public</code> method with a <code>void</code> return type;
+                            </dd>
+                        <dt>@AfterClass</dt>
+                            <dd>
+                                Runs once at the end of the process and is used to close or teardown any resources created in a method annotated with <code>@BeforeClass</code>
+                            </dd>
+                        <dt>@FixMethodOrder</dt>
+                            <dd> 
+                                This is a class level annotation and not method level as all the others have been.  It is used to enable the runnning of the rules in a fixed order, it is recommended not to use this annotation.  All tests should be independant of each other and not rely on the state mutation of a previous test as the starting state of an other test.  
+                            </dd>
+                    </dl>
+                    Below is a simple code example of the use of these annotations just writing a message out to the console to show when each method is called.
+                    <script src="https://gist.github.com/daisonp/c7018a0c8be5904d8393b1f4ac4d6049.js"></script>
+
+                    <div class="col-lg-6">
+                            <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/junit-ignored-test.png" alt="Ignored unit test" class="img-responsive img-hover">
+                        </div>
+                    <div class="col-lg-6">
+                         <p>The output of running this test class will be</p>
+                        <pre>
+@BeforeClass will be run once at the start before any of the tests
+@Before runs before each test is executed
+This is test 1
+@After runs after each test is executed
+@Before runs before each test is executed
+This is test 2
+@After runs after each test is executed
+@AfterClass will be run once at the end of all the tests
+                        </pre>
+                        <p>There are 2 other annotations <code>@Rule</code> and <code>@RunWith</code> which require further explanation</p>
+                    </div>
                     
                     
                 </div>
             </div>
 
-            <div class="row" id="toc">
+            <div class="row" id="junit-rules">
                 <div class="col-lg-12">
+                    <h2>6. JUnit Rules <code>@Rule</code></h2>
                     <pre>
-                    
-                            
-                            5) Assertion's
-                               a) basic out of the box assertions
-                               b) assertThat with hamcrest
-                               c) Testing for exceptions
-                            
-                            6) Annotations
-                            @Before, @BeforeClass, @After, @AfterClass, @Ignore
-                            
-                            7) Test Runners @RunWith
-                                a) What are they
-                                b) Suite
-                                c) Paramertized
-                            
-                            8) Code coverage
-                               a)  ECLEMMA Eclipse plugin
-                               b)  Maven plugin
-                            
-                            9)  Junit functionality not covered
-                            Rules, Categories, Theories
-                            
-                            
-                            
-                            
-                            
+                            DisableOnDebug 
+                            ErrorCollector 
+                            ExpectedException 
+                            ExternalResource 
+                            RuleChain 
+                            RunRules 
+                            Stopwatch 
+                            TemporaryFolder 
+                            TestName 
+                            TestWatcher 
+                            TestWatchman 
+                            Timeout 
+                            Timeout.Builder 
+                            Verifier
+
+                    </pre>
+                </div>
+            </div>
+
+            <div class="row" id="test-runners">
+                <div class="col-lg-12">
+                    <h2>7. Test Runners <code>@RunWith</code></h2>
+                    <pre>
+                    7) Test Runners @RunWith
+                    a) What are they
+                    b) Suite
+                    c) Paramertized
+                    </pre>
+
+                </div>
+            </div>
+
+            <div class="row" id="not-covered">
+                <div class="col-lg-12">
+                    <h2>8. Features not covered</h2>
+                    <pre>
+                        Categories
+                        Theories    
                     </pre>
                 </div>
             </div>
         </div>
-
-
-        <div class="container=fluid" id="intro">
-
-        </div>
     </div>
     <!-- /#page-content-wrapper -->
-
 </div>
 <!-- /#wrapper -->
