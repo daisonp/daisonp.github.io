@@ -52,7 +52,7 @@ parentUrl: /pages/tutorials/testing/index.html
                         </ul>
                     </p>
                     <p class="question">Other test frameworks</p>
-                    <p class="answer">TestNG, Junit 5</p>
+                    <p class="answer">Whilst this tutorial is based on <a href="http://junit.org/junit4/" target="_blank">JUnit 4</a> there are other testing frameworks aviable.  <a href="http://testng.org/doc/index.html">TestNG</a> is a framework which was inspired by JUnit but added advanced features at a time when JUnit was not being updated on a regular basis.  <a href="http://junit.org/junit5/">JUnit 5</a> is the latest iteration of the JUnit framework and can run existing JUnit 4 tests whilst adding a number of improvemnts, JUnit 5 requires java 8+ to run.</p>
                 </div>
 
             </div>
@@ -101,9 +101,11 @@ parentUrl: /pages/tutorials/testing/index.html
                             <li>Line 13 - Assertion checking the returned value matches the expected value, using assertEquals the expected value is the first parameter and the actual value is the second parameter.</li>
                         </ul>
                     </p>
+
                     <h4>Run the tests</h4>
                     <p>The test class can be run by right clicking on the test class and selecting 'Run As' --> Junit Test. This will then run the tests and report the outcome in a new JUnit view</p>
                     <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/failing-unit-test.png" alt="Failing unit test" class="img-responsive img-hover"> 
+
                     <h4>Write code to pass the test</h4>
                     We then change the code in the FizzBuzz.run(int) method to pass the test, this should be the simplest solution at this point and not the whole required functionality
                     <H5>FizzBuzz.java</H5>
@@ -111,6 +113,7 @@ parentUrl: /pages/tutorials/testing/index.html
                     <h4>Rerun the test</h4>
                     <p>The tests can either be rerun by pressing the 'rerun test' button in the JUnit view or by selecting 'Run as' --> JUnit as done previously.  At this point the tests should pass, if not review the code in FizzBuzz.run(int)
                     </p>
+
                     <h4>Refactor and repeat</h4>
                     <p>So following the TDD development cycle we have; Added a failing test, run the test, written code to pass the test and re-run the test.  All that is left to do is refactor the code and repeat by the cycle by adding new tests</p>
                     <p>So just using the @Test annotation and the assertEquals assertion we should be able to repeat this process and create tests to test all the required functionality
@@ -135,18 +138,91 @@ parentUrl: /pages/tutorials/testing/index.html
                 <div class="col-lg-12">
                     <h2>3. Assertions</h2>
                     <p>Within the JUnit framework an assertion is used to determine whether a test passes or fails, failing assertions throw <code>AssertionError</code> exceptions which allow the framework to mark a test as failed. So far we have only used the assertEquals assertion from the org.junit.Assert class but there are other<a href="http://junit.org/junit4/javadoc/4.12/org/junit/Assert.html" target="_blank"> assertion methods available in the Assert class</a>, below is an example of some of the various methods</p>
+
                     <script src="https://gist.github.com/daisonp/b166ba1210fb2422b113e0108edebc95.js"></script>
                     <p>There are 2 methods not shown these are fail() which simply throws an <code>AssertionError</code> and assertThat() which uses Hamcrest Matchers.</p>
-                    <h4>AssertThat and Hamcrest Matchers</h4>
 
-                    explanation of AssertThat and Matchers goes here
+                    <h4>AssertThat and Hamcrest Matchers</h4>
+                    <p>AssertThat is a fairly new addition to the <code>org.junit.Assert</code> methods and offers an improved testing mechanism than the the standard assert* methods that were available previously.  The <code>assertThat()</code>  method makes use of the <a href="http://hamcrest.org/JavaHamcrest/" target="_blank">Hamcrest Library</a> which describes itself as being <quote>"a framework for writing matcher objects allowing 'match' rules to be defined declaratively."</quote>.  The new method offers a number of improvements over the standard assertion methods, some of these are;</p>
+                    <dl>
+                        <dt>Readability</dt>
+                        <dd>
+                            Tests using <code>assertThat()</code> are structured to read more along the lines of an english sentence.
+                            For instance compare the following 3 tests below, all of the tests check that the value of a variable myColour is red
+                            <script src="https://gist.github.com/daisonp/ce606a39ff47b53e71575c609693b047.js"></script>
+                            The first thing to notice here is that the order of the actual and expected values are switched with the <code>assertEquals</code> method having the expected value first and <code>assertThat</code> having it last, resulting in a more coherent sentence structure. We can also see that the matchers <code>is()</code> and <code>equalTo()</code> can be chained / nested together in fact if no matcher is supplied to <code>is()</code> then <code>equalTo()</code> is used by default.
+                        </dd>
+                        <dt>Flexibiliy</dt>
+                        <dd>
+                            The ability to create custom matchers whilst also utilising the built-in matchers that take Matchers as arguments allows us to build complex queries in a succinct manner.
+                            <script src="https://gist.github.com/daisonp/d734b1990960b1afd1660bf1022acc8d.js"></script>
+                        </dd>
+                        <dt>Improved failure messages</dt>
+                        <dd>
+                            In the previous 2 tests the failure messages output from the tests are completely different with the <code>assertThat</code> being much more verbose and meaningfull 
+                            <pre>
+String name = "Eric";
+assertTrue(name.startsWith("A") || name.startsWith("B"));
+
+results in a java.lang.AssertionError
+                            </pre>
+                            where as 
+                            <pre>
+String name = "Eric";
+assertThat(name, anyOf(startsWith("A"), startsWith("B")));
+                            
+results in a java.lang.AssertionError: 
+Expected: (a string starting with "A" or a string starting with "B")
+        but: was "Eric"
+                            </pre>
+                        </dd>
+                    </dl>
+
+                    <h4>Customer Matchers</h4>
+                    <p>Custom matchers are what gives the <code>assertThat</code> method greater flexibiliy than the standard assertion methods.  For example if we want to create a custom matcher than ensures that a string is at least a minimum length then we should create a class that extends <code>org.hamcrest.BaseMatcher</code>, this in turn would force us to implement 2 methods
+                    <ul class="no-indent-no-bullets">
+                        <li><code>public boolean matches(Object item)</code> - method to perform the actual comparison test</li>
+                        <li><code>public void describeTo(Description description)</code> - the Description object is what outputs the failure message, this method is used to append the expected value to the description</li>
+                    </ul>
+                    Example class 
+                    </p>
+                    <script src="https://gist.github.com/daisonp/170e908b0072f01164abdde2bc4bb7c7.js"></script>
+                    <p>Use of the custom matcher in a test would be</p>
+                    <script src="https://gist.github.com/daisonp/f6b3ff85b2752d139455950ee571a9c1.js"></script>
+                    <p>With 2 of the test failing outputting a message
+                        <div class="col-lg-6">
+                            custom_matcher_test_fail
+<pre>
+java.lang.AssertionError: 
+Expected: length of at least <25>
+        but: was only <21>
+</pre>
+                        </div>
+                        <div class="col-lg-6">
+                            custom_matcher_null_value
+<pre>
+java.lang.AssertionError: 
+Expected: length of at least <5>
+        but: was null
+</pre>
+                            </div>
+                    </p>
                 </div>
             </div>
 
             <div class="row" id="assumes">
                     <div class="col-lg-12">
                         <h2>4. Assumes</h2>
+                        <p>JUnit assumptions allow developers to programmatically disable a test if a given condition is not met.  For instance you might be writing an integration test that is reliant on a database connection, if the database is not avilable then we may want to ignore the tests as the results would have no significance.</p>
+                        <p>The class <code>org.junit.Assume</code> has a small subset of the methods available in <code>org.junit.Assert</code> assertTrue and assertFalse are avilable but mostly all other assumptions will be done with the assertThat method.  Refer to the <a href="http://junit.org/junit4/javadoc/latest/org/junit/Assume.html">javadocs for Assume</a> for a full list of methods</p>
                         
+                        <div class="col-lg-6">
+                            <p>The simple example below shows one test failing and the other being ignored as the assumption on the first line of the test passes for one and not the other</p>
+                            <script src="https://gist.github.com/daisonp/2beb949693a106ab9d639075011b604b.js"></script>
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/assumptions.png" alt="Assumption test" class="img-responsive img-hover"> 
+                        </div>
                     </div>
                 </div>
 
