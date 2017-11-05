@@ -178,7 +178,7 @@ Expected: (a string starting with "A" or a string starting with "B")
                         </dd>
                     </dl>
 
-                    <h4>Customer Matchers</h4>
+                    <h4>Custom Matchers</h4>
                     <p>Custom matchers are what gives the <code>assertThat</code> method greater flexibiliy than the standard assertion methods.  For example if we want to create a custom matcher than ensures that a string is at least a minimum length then we should create a class that extends <code>org.hamcrest.BaseMatcher</code>, this in turn would force us to implement 2 methods
                     <ul class="no-indent-no-bullets">
                         <li><code>public boolean matches(Object item)</code> - method to perform the actual comparison test</li>
@@ -229,7 +229,7 @@ Expected: length of at least <5>
             <div class="row" id="annotations">
                 <div class="col-lg-12">
                     <h2>5. Annotations</h2>
-                    <p>In the JUnit framework there are a number of hooks into the running livecycle of the tests where we can supply our own code, these hooks are activated by adding annotations to methods.  The available annotations are</p>
+                    <p>In the JUnit framework there are a number of hooks into the running lifecycle of the tests where we can supply our own code, these hooks are activated by adding annotations to methods.  The available annotations are</p>
                     <dl>
                         <dt>@Test</dt>
                             <dd>
@@ -265,7 +265,7 @@ Expected: length of at least <5>
 
                     <div class="col-lg-6">
                             <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-1/junit-ignored-test.png" alt="Ignored unit test" class="img-responsive img-hover">
-                        </div>
+                    </div>
                     <div class="col-lg-6">
                          <p>The output of running this test class will be</p>
                         <pre>
@@ -288,46 +288,81 @@ This is test 2
             <div class="row" id="junit-rules">
                 <div class="col-lg-12">
                     <h2>6. JUnit Rules <code>@Rule</code></h2>
-                    <pre>
-                            DisableOnDebug 
-                            ErrorCollector 
-                            ExpectedException 
-                            ExternalResource 
-                            RuleChain 
-                            RunRules 
-                            Stopwatch 
-                            TemporaryFolder 
-                            TestName 
-                            TestWatcher 
-                            TestWatchman 
-                            Timeout 
-                            Timeout.Builder 
-                            Verifier
-
-                    </pre>
+                    <p>JUnit rules give us another way to hook into the lifecycle of the test execution, using a <code>@Rule</code> we can add functionality which applies to all tests within a test class.  There are a number rules that are supplied with JUnit and we can create our own. 
+                    </p>
+                    <p>One of the more common pre-defined rules is the <a href="http://junit.org/junit4/javadoc/4.12/index.html?org/junit/rules/ExpectedException.html"><code>ExpectedException</code></a> rule which is used to verify that the code being tested throws a specific exception
+                    </p>
+                   
+                    <p>Testing for exceptions without using @Rule</p>
+                    <script src="https://gist.github.com/anonymous/0829c1f9235ec3b91a38dfbbc2f19e8a.js"></script>
+                
+                    <p>Testing for exceptions with @Rule</p>
+                    <script src="https://gist.github.com/anonymous/8ca39d69c9f84990a46449bb93520e80.js"></script>
+                   
+                    <p>
+                        The other supplied JUnit rules are;
+                        <ul>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/DisableOnDebug.html">DisableOnDebug</a> - The DisableOnDebug Rule allows you to label certain rules to be disabled when debugging.</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/ErrorCollector.html">ErrorCollector</a> - The ErrorCollector rule allows execution of a test to continue after the first problem is found</li>  
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/ExternalResource.html">ExternalResource</a> - A base class for Rules (like TemporaryFolder) that set up an external resource before a test (a file, socket, server, database connection, etc.), and guarantee to tear it down afterward.</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/RuleChain.html">RuleChain</a> - The RuleChain rule allows ordering of TestRules.</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/Stopwatch.html">Stopwatch</a> - The Stopwatch Rule is an abstract rule which notifies one of its own protected methods of the time spent by a test</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/TemporaryFolder.html">TemporaryFolder</a> - The TemporaryFolder Rule allows creation of files and folders that should be deleted when the test method finishes (whether it passes or fails). Whether the deletion is successful or not is not checked by this rule. No exception will be thrown in case the deletion fails.</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/TestName.html">TestName</a> - The TestName Rule makes the current test name available inside test methods</li>
+                            <li><a href="http://junit.org/junit4/javadoc/4.12/org/junit/rules/Timeout.html">Timeout</a> - The Timeout Rule applies the same timeout to all test methods in a class</li>
+                        </ul>
+                    </p>
                 </div>
             </div>
 
             <div class="row" id="test-runners">
                 <div class="col-lg-12">
                     <h2>7. Test Runners <code>@RunWith</code></h2>
-                    <pre>
-                    7) Test Runners @RunWith
-                    a) What are they
-                    b) Suite
-                    c) Paramertized
-                    </pre>
+                    <p>All tests are run via a Test Runner this is <a href="http://junit.sourceforge.net/javadoc/org/junit/runners/BlockJUnit4ClassRunner.html"></a> <code>BlockJUnit4ClassRunner</code> by default but can be replace with other test runners with the use of <code>@RunWith</code> annotation.  @RunWith is a class level annotation that takes a class name as the parameter, this class name is test runner that will be used.</p>
+                    <P>JUnit comes with a couple of runners built in, 2 of the most common are <a href="http://junit.org/junit4/javadoc/latest/org/junit/runners/Suite.html"></a><code>Suite</code> and <a href="http://junit.org/junit4/javadoc/latest/org/junit/runners/Parameterized.html"><code>Parameterized</code></a>
+                    </P>
+                    <h4>Suite</h4>
+                    <p>
+                        Is used to group a number of test classes together to run as a single set of tests
+                        <script src="https://gist.github.com/anonymous/50f7dd23d4db67e9f5e6bdec2211fb4a.js"></script>
+                        <ul> 
+                            <li>Line 6 - Sets the test runner for this class to the Suite test runner</li>
+                            <li>Lines 7 to 10 - Uses the @Suite annotation to list all the test classes to run</li>
+                            <li>Line 11 - Name of this test class, there are no methods necessary</li> 
+                        </ul>
+                    </p>
+                    <h4>Parameterized</h4>
+                    <p>
+                        Is used to run all the tests in a single test class multiple times but with different parameters.  An example of this would be to rewrite the FizzBuzzTest class to be parameterized so it only contains 1 test running for different test data.
+                        <script src="https://gist.github.com/daisonp/a71e27f35a3954447ca0704425dcd443.js"></script>
+                        <ul> 
+                            <li>Line 14 - Sets the test runner for this class to the Parameterized test runner</li>
+                            <li>Lines 17 to 20 - The <code>@Parameters</code> annotation specifies a method as supplying data for the tests, the method must be <code>public</code> and <code>static</code>.  The name value of the annotation is used to overwrite the default name of the test when they run</li>
+                            <li>Lines 24 to 28 - the <code>@Parameter</code> is used to mark fields as get data from the <code>@Parameters</code> method, the number represents the order of the data in the Object array.  This can also be done via a constructor</li> 
+                            <li>Lines 30 to 34 - The test to run, uses the input and expected values from the data method</li>
+                        </ul>
+                    </p>
 
                 </div>
             </div>
 
             <div class="row" id="not-covered">
                 <div class="col-lg-12">
-                    <h2>8. Features not covered</h2>
-                    <pre>
-                        Categories
-                        Theories    
-                    </pre>
+                    <h2>8. Experimental features not covered</h2>
+                    <dl>
+                        <dt>
+                            <a href="https://github.com/junit-team/junit4/wiki/Categories">Categories</a> - group your tests together for easier test filtering
+                            <dd>
+                                From a given set of test classes, the Categories runner runs only the classes and methods that are annotated with either the category given with the @IncludeCategory annotation, or a subtype of that category. Either classes or interfaces can be used as categories. Subtyping works, so if you say @IncludeCategory(SuperClass.class), a test marked @Category({SubClass.class}) will be run.
+                            </dd>
+                        </dt>
+                        <dt>
+                            <a href="https://github.com/junit-team/junit4/wiki/Theories">Theories</a> - write tests that are more like scientific experiments using randomly generated data
+                            <dd>
+                                More flexible and expressive assertions, combined with the ability to state assumptions clearly, lead to a new kind of statement of intent, which we call a "Theory". A test captures the intended behavior in one particular scenario. A theory captures some aspect of the intended behavior in possibly infinite numbers of potential scenarios.
+                            </dd>
+                        </dt>
+                    </dl>
                 </div>
             </div>
         </div>
