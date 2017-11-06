@@ -28,27 +28,68 @@ parentUrl: /pages/tutorials/testing/index.html
     <div id="page-content-wrapper">
         <div class="container-fluid">
 
-            <div class="row" id="introduction">
+            <div class="row" id="{{ site.data.tutorials-testing.[1].sub-sections[0].url }}">
                 <div class="col-lg-12">
-                    <pre>
-                            1) Code coverage
-                            a)  ECLEMMA Eclipse plugin
-                            b)  Maven plugin
-
-                            2) FindBugs
-                            3) PMD
-                            4) checkstyle
-                            5) find security bugs - http://find-sec-bugs.github.io/
-
-                            code generators
-                            http://www.junit-tools.org/index.php
-                            https://randoop.github.io/randoop/
-                            http://www.evosuite.org/downloads/
-                            http://moreunit.sourceforge.net/
-                            
-                    </pre>
+                    <h2>1. {{ site.data.tutorials-testing.[1].sub-sections[0].heading }} </h2>
+                    <p class="question">What is static analysis</p>
+                    <p class="answer">Static analysis is process of analyzing the source code of a program to establish a metric on the quality of the code.  Wikipedia describes static analysis as being
+                        <blockquote cite="https://en.wikipedia.org/wiki/Static_program_analysis">
+                            <p>
+                                Static program analysis is the analysis of computer software that is performed without actually executing programs 
+                                (analysis performed on executing programs is known as dynamic analysis). In most cases the analysis is performed 
+                                on some version of the source code, and in the other cases, some form of the object code.
+                            </p>
+                            <p>
+                                The term is usually applied to the analysis performed by an automated tool, with human analysis being called program 
+                                understanding, program comprehension, or code review. Software inspections and software walkthroughs are also used in 
+                                the latter case.
+                            </p>
+                            <footer class="left-align-footer"><a href="https://en.wikipedia.org/wiki/Static_program_analysis">https://en.wikipedia.org/wiki/Static_program_analysis</a></footer>
+                        </blockquote>
+                    </p>
+                    <p class="question">How are static analysis tools used</p>
+                    <p class="answer">Static analysis is normally run as part of the build but can be kicked off manually for a single class from an IDE using various plugins.</p>
                 </div>
             </div>
+
+            <div class="row" id="{{ site.data.tutorials-testing.[1].sub-sections[1].url }}">
+                <div class="col-lg-12">
+                    <h2>2. {{ site.data.tutorials-testing.[1].sub-sections[1].heading }} </h2>
+                    <p>Code coverage is a metric which is used to determine how much of the code is covered by tests.  Different code coverage tools may report different statics but the common ones are;</p>
+                    <ul>
+                        <li>Class coverage - reports which classes have been executed when running the tests</li>
+                        <li>Method coverage - has the method been executed </li>
+                        <li>Line / Statement coverage - which lines are executed and which are not</li>
+                        <li>Branch coverage - has each branch of the code been executed</li>
+                    </ul>
+                    <p>Whereas having a low code coverage percentage indicates that the system under test is lacking automated tests having a high code coverage percent
+                        , whilst desirable, in itself could actually be a false indicator of code quality.
+                    </p>
+                    
+                        <p>To work through some examples of how code coverage tools work we a going to be using the <a href="http://www.eclemma.org/">EclEmma code coverage plugin</a> for <a href="https://www.eclipse.org/">Eclipse</a>, this is pre-installed in the latest version (Oxygen) but will need to be manually installed in earlier versions.    
+                    </p>
+                    
+                </div>
+            </div>
+
+
+            <pre>
+                    1) Code coverage
+                    a)  ECLEMMA Eclipse plugin
+                    b)  Maven plugin
+
+                    2) FindBugs
+                    3) PMD
+                    4) checkstyle
+                    5) find security bugs - http://find-sec-bugs.github.io/
+
+                    code generators
+                    http://www.junit-tools.org/index.php
+                    https://randoop.github.io/randoop/
+                    http://www.evosuite.org/downloads/
+                    http://moreunit.sourceforge.net/
+                    
+            </pre>
         </div>
     </div>
 </div>
