@@ -66,8 +66,23 @@ parentUrl: /pages/tutorials/testing/index.html
                         , whilst desirable, in itself could actually be a false indicator of code quality.
                     </p>
                     
-                        <p>To work through some examples of how code coverage tools work we a going to be using the <a href="http://www.eclemma.org/">EclEmma code coverage plugin</a> for <a href="https://www.eclipse.org/">Eclipse</a>, this is pre-installed in the latest version (Oxygen) but will need to be manually installed in earlier versions.    
+                    <p>To work through some examples of how code coverage tools works we a going to be using the <a href="http://www.eclemma.org/">EclEmma code coverage plugin</a> 
+                       for <a href="https://www.eclipse.org/">Eclipse</a>, this is pre-installed in the latest version (Oxygen) but will need to be manually installed in earlier 
+                       versions.    
                     </p>
+                </div>
+                <div class="col-lg-12">
+                    <p>To show how code coverage works will start with the FizzBuzz application that was created in Section 1</p>
+                    <h5>FizzBuzz.java</h5>
+                    <script src="https://gist.github.com/daisonp/6d3fdd68c0edc6693b09f816b195c3a6.js"></script>
+                    <h5>FizzBuzzTest.java</h5>
+                    <script src="https://gist.github.com/daisonp/a71e27f35a3954447ca0704425dcd443.js"></script>
+                    
+                        <p>Running the EclEmma code coverage in eclipse is done the same way as executing a test.  If the test class is open just right click in code editor tab and then select 'coverage as' --> 'JUnit Test'</p>
+                        <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-1.png" alt="Run code coverage" class="img-responsive img-hover"> 
+                    
+                        <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-2.png" alt="Run code coverage" class="img-responsive img-hover"> 
+                        
                     
                 </div>
             </div>
@@ -91,5 +106,12 @@ parentUrl: /pages/tutorials/testing/index.html
                     
             </pre>
         </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
     </div>
 </div>

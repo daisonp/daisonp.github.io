@@ -37,6 +37,7 @@ Icon
 .Trashes
 
 # =============================
-# Jekyll files
+# environment files
 # =============================
 .jekyll-metadata
+.classpath
