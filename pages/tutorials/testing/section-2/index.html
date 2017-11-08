@@ -66,32 +66,77 @@ parentUrl: /pages/tutorials/testing/index.html
                         , whilst desirable, in itself could actually be a false indicator of code quality.
                     </p>
                     
-                    <p>To work through some examples of how code coverage tools works we a going to be using the <a href="http://www.eclemma.org/">EclEmma code coverage plugin</a> 
-                       for <a href="https://www.eclipse.org/">Eclipse</a>, this is pre-installed in the latest version (Oxygen) but will need to be manually installed in earlier 
-                       versions.    
-                    </p>
                 </div>
                 <div class="col-lg-12">
+                    <h4>Running code coverage analysis in the Eclipse IDE</h4>
+                    <p>To work through some examples of how code coverage tools works we a going to be using the <a href="http://www.eclemma.org/">EclEmma code coverage plugin</a> 
+                        for <a href="https://www.eclipse.org/">Eclipse</a>, this is pre-installed in the latest version (Oxygen) but will need to be manually installed in earlier 
+                        versions.    
+                     </p>
                     <p>To show how code coverage works will start with the FizzBuzz application that was created in Section 1</p>
                     <h5>FizzBuzz.java</h5>
                     <script src="https://gist.github.com/daisonp/6d3fdd68c0edc6693b09f816b195c3a6.js"></script>
                     <h5>FizzBuzzTest.java</h5>
                     <script src="https://gist.github.com/daisonp/a71e27f35a3954447ca0704425dcd443.js"></script>
                     
-                        <p>Running the EclEmma code coverage in eclipse is done the same way as executing a test.  If the test class is open just right click in code editor tab and then select 'coverage as' --> 'JUnit Test'</p>
-                        <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-1.png" alt="Run code coverage" class="img-responsive img-hover"> 
+                    <h5>Running the tests</h5>
+                    <p>Running the EclEmma code coverage in eclipse is done the same way as executing a test.  If the test class is open just right click in code editor tab and then select 'coverage as' --> 'JUnit Test'</p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-1.png" alt="Run code coverage" class="img-responsive img-hover"> 
                     
-                        <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-2.png" alt="Run code coverage" class="img-responsive img-hover"> 
-                        
-                    
+                    <h5>Code coverage results</h5>
+                    <p>Results of running the tests via EclEmma</p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-2.png" alt="code coverage result 1" class="img-responsive img-hover"> 
+                    <p>The images show 3 views, these area;</p>
+                    <dl>
+                        <dt>Junit</dt> 
+                            <dd>Shows successful execution of the tests</dd>
+                        <dt>Coverage</dt>
+                            <dd>Shows the number of instructions in scope of the coverage run, with the number of covered and missed instructions</dd>
+                        <dt>Code editor view</dt>
+                            <dd>When the FizzBuzz class is brought up in the code editor we can now see some lines are highlighted, lines highlighted in green mean they were executed by tests</dd>
+                    </dl>
+
+                </div>
+                <div class="col-lg-12">
+                    <h4>Showing reduced coverage</h4>
+                    <p>Having 100% code coverage is trivial in a small program like FizzBuzz. So what we will now do is create another version called ExtraFizzBuzz which will return 'ExtraFizzBuzz' if the supplied value is divisable by 3, 10 and 15.  Instead of following TDD practices of writing the test first we will amend the code first to show how code not covered by tests is displayed.</p>
+                    <h5>ExtraFizzBuzz.java</h5>
+                    <script src="https://gist.github.com/daisonp/dcb44eeb5036c8b5379e3dff653d480e.js"></script>
+                    <p>The only difference between this and the FizzBuzz code is the addition of lines 8 to 10 which check if a values is divisable by 10 and outputs the word 'Extra' if it is. The result of running ExtraFizzBuzzTest (which is a copy of FizzBuzzTest with the class being called changed) will be</p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-3.png" alt="code coverage result 3" class="img-responsive img-hover"> 
+                    <p>Things to notice from the result here are;</p>
+                    <ol>
+                        <li>Code coverage view has been changed to show lines of code instead of instructions, this is done by selecting the metric to be displayed from the 'View Menu' in the Coverage view.</li>
+                        <li>Out of 10 lines of code in ExtraFizzBuzz only 9 were executed.  No lines from FizzBuzz were executed but this is due to run the code coverage analysis against a single test class.  Code coverage, or just tests, can be ran for the whole project by right clicking on the project and selecting the relevant option</li>
+                        <li>Line 8 is highlighted in yellow which indicates the line was executed by not all branches of the <code>if</code> statement, hovering over the line will show how many branches the statement contains and how many were missed.</li>
+                        <li>Line 9 is highlighted in red which indicates that the line was not executed during the tests.</li>
+                    </ol>
+                </div>
+                <div class="col-lg-12">
+                    <h4>Fallacies about code coverage</h4> 
+                    <h5>1. 100% code coverage means there will be no bugs</h5>
+                    <p>This one can easily be disproved by adding a couple of new tests to the ExtraFizzBuzzTest class</p>
+                    <script src="https://gist.github.com/daisonp/ee3896ec3dc106f43e7571c528773b60.js"></script>
+                    <p>3 new tests have been added; a test to check that if a number that is divisable by 10 but not by 3 is supplied then 'Buzz' and not 'ExtraFizzBuzz' is output, test to check that a number divisable by 10 and 3 outputs 'ExtraFizzBuzz' and finally a test to check that the program handles a null value being supplied. The result of running these tests are;
+                    </p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-4.png" alt="code coverage result 4" class="img-responsive img-hover"> 
+                    <p>As the image shows 100% code coverage is now achieved but there is a bug that causes a <code>NullPointerException</code> when a null value is supplied</p>
+                    <h5>2. All code needs to be covered</h5>
+                    <p>Lets look at an example of a Customer class that contains fields for id, name and date of birth, along with a method that returns the age of someone on any given date.  The majority of this code (contructor, getters and setters) has been generated by the IDE, the only method that was entered manually is the ageOnDate method.</p>
+                    <script src="https://gist.github.com/daisonp/de4e69612710aed0a1a16ca4762147f6.js"></script>
+                    <p>As all the constructor, getter and setters methods are auto generated is there any need to test these methods?  The common consensus to this question is no, even if all these methods were added in manually and not auto generated then writing tests for them would be generally be a waste of time.  That's not to say that these methods cannot contain bugs but the likelihood is low and there are other analysis tools which can find these bugs for us.</p>
+                    <p>So if we are not testing and getters, setters and construtor methods what should be tested?  We should be writing tests for all methods that contain logic that is not just assigning values straight from the parameters to a variable.  In this case that is just the <code>ageOnDate</code> method.</p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-5.png" alt="code coverage result 5" class="img-responsive img-hover"> 
+                </div>
+                <div class="col-lg-12">
+                    <h4>Running code coverage as part of a maven build</h4>
+
                 </div>
             </div>
 
 
             <pre>
-                    1) Code coverage
-                    a)  ECLEMMA Eclipse plugin
-                    b)  Maven plugin
+                   
 
                     2) FindBugs
                     3) PMD

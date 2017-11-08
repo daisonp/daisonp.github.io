@@ -24,10 +24,6 @@ a:focus {
   text-decoration: none;
 }
 
-img {
-  height: 800px;
-  width: 600px;
-}
 
 .no-indent-no-bullets {
   list-style:none;
