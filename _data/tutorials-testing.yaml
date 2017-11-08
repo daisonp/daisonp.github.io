@@ -29,10 +29,10 @@
       url: code-coverage
     - heading: FindBugs
       url: find-bugs
-    - heading: PMD
-      url: pmd
     - heading: CheckStyle
       url: check-style
+    - heading: PMD
+      url: pmd
     - heading: Find Security Bugs
       url: find-sec-bugs
     - heading: Code generators
