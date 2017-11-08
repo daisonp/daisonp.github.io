@@ -138,8 +138,21 @@ parentUrl: /pages/tutorials/testing/index.html
                     </p>
                     <script src="https://gist.github.com/daisonp/eab120b6f189cf113f1e6fe1437e90ba.js"></script>
                     <p>
-                        
+                        The changes in the pom is the addition of the build section, the plugin for jacoco hooks into the <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank">Maven build lifecycle</a> which runs the jacoco code on the specified phases.  This tutorial is not going to go into depth on how to use maven we will just add the necessary settings to the pom file and run the build.  It should be noted that for this configuration the code coverage reports will only be created if there are no test failures, so either remove the test for null from ExtraFizzBuzzTest or fix the code in ExtraFizzBuzz to handle nulls.
                     </p>
+                    <p>
+                        To execute the maven build from the IDE then right click on the project and select 'Run As' --> 'Maven install'.  If you have maven installed locally then you can also issue the <code>mvn clean install</code> command in a console when in the same directory as the pom.xml file
+                    </p>
+                    <p>
+                        Once the maven build has run then a <code>target/jacoco-ut/index.html</code> file will be created, which shows the results of the code coverage analysis.
+                    </p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-6.png" alt="code coverage result 6" class="img-responsive img-hover"> 
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-7.png" alt="code coverage result 7" class="img-responsive img-hover"> 
+                    <p>
+                        The <code>index.html</code> file will give you the overall code coverage analysis for project, you can drill down to more in depth analysis on a class by class basis.
+                    </p>
+                    <img src="{{ site.url | prepend: site.base_url }}/img/tutorials/testing/section-2/code-coverage-8.png" alt="code coverage result 8" class="img-responsive img-hover"> 
+                    
                 </div>
             </div>
 
