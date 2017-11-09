@@ -1,0 +1,26 @@
+--- 
+layout: default 
+section: Section 3 - Extending unit test with Mock / Stubs
+parent: Testing / QA
+parentUrl: /pages/tutorials/testing/index.html
+---
+<link rel="stylesheet" href="{{ "/css/syntax.css" | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="{{ "/css/tutorial.css" | prepend: site.baseurl | prepend: site.url }}">
+
+<div id="wrapper" class="extra-large-padding-top">
+        
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <h1>{{ page.section }}</h1>
+        <ol class="sidebar-nav">
+            {% for section in site.data.tutorials-testing %}
+                {% if section.heading == page.section %}
+                    {% for subheading in section.sub-sections %}
+                    <li><a href="#{{ subheading.url }}">{{ subheading.heading }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </div>
+    <!-- /#sidebar-wrapper -->
+</div>

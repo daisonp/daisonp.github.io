@@ -3,10 +3,10 @@
   url: /pages/tutorials/testing/index.html
   image_url: /img/tutorials/testing.jpg
   
-#- name: Spring
-#  description: Spring framework
-#  url: /pages/tutorials/spring/index.html
-#  image_url: /img/tutorials/spring.jpg
+- name: Spring
+  description: Spring framework
+  url: /pages/tutorials/spring/index.html
+  image_url: /img/tutorials/spring.jpg
 
 #- name: Micro Services
 #  description: Micros Services - What, Why and How

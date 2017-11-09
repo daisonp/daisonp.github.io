@@ -40,21 +40,24 @@
 
 - section:
   heading : Section 3 - Extending unit test with Mock / Stubs
-  url : bob
+  url : /pages/tutorials/testing/section-3/index.html
+  sub-sections:
+    - heading: Introduction
+      url: introduction
   
 - section:
   heading : Section 4 - Integration Testing
-  url : bob
+  url : /pages/tutorials/testing/section-4/index.html
   
 - section:
   heading : Section 5 - UI Testing
-  url : bob
+  url : /pages/tutorials/testing/section-5/index.html
   
 - section:
   heading : Section 6 - Performance Testing
-  url : bob
+  url : /pages/tutorials/testing/section-6/index.html
   
 - section:
   heading : Section 7 - Security Testing
-  url : bob
+  url : /pages/tutorials/testing/section-7/index.html
   
