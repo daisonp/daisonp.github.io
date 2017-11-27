@@ -115,3 +115,7 @@ a:focus {
       width: 100%;
   }
 }
+
+.strong-list-item {
+  font-weight: bold;
+}

@@ -27,7 +27,7 @@
       url: introduction
     - heading: Code Coverage
       url: code-coverage
-    - heading: FindBugs
+    - heading: FindBugs / SpotBugs
       url: find-bugs
     - heading: CheckStyle
       url: check-style
