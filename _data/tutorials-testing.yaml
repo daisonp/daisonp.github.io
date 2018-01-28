@@ -44,6 +44,11 @@
   sub-sections:
     - heading: Introduction
       url: introduction
+    - heading: Stubs
+      url: stubs
+    - heading: Mocking
+      url: mocking
+
   
 - section:
   heading : Section 4 - Integration Testing

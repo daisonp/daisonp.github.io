@@ -192,7 +192,7 @@ parentUrl: /pages/tutorials/testing/index.html
                     <p>For the purpose of showing how SpotBugs reports suspected bugs we will amend the Customer class created in the Code Coverage section to have a couple of deliberate bugs.</p>
                     <script src="https://gist.github.com/anonymous/c20f88d72c3d0dede8c10915ece5bd36.js"></script>
                     <ol>
-                        <li>Line 20 to 20 - variable is being self assigned as the name of the parameter is different</li>
+                        <li>Line 20 - variable is being self assigned as the name of the parameter is different</li>
                         <li>Line 46 - Equals method is overriden but not the hashcode</li>
                         <li>Line 67 - != comparison is used on a string instead of the <code>.equals()</code> method</li>
                     </ol>
@@ -208,7 +208,15 @@ parentUrl: /pages/tutorials/testing/index.html
                         <li class="strong-list-item">Lines 43 to 51- Reporting configuration</li>
                         <dd>Adds the SpotBugs plugin to the reporting section of the pom file, these plugins are run when the <code>site</code> goal is run, no additional configuration is required.</dd>
                     </ul>
-                    <p>This configuration is fine if you only want to run SpotBugs periodically when the site information is generated but you want to run SpotBugs as part of each build and even fail the build if errors are found.  We can do this by adding the following configuration to the <code>build</code> section.</p>
+                    <p>This configuration is fine if you only want to run SpotBugs periodically when the site information is generated. Realistically though you will want to run SpotBugs as part of each build and sometimes you may even want to fail the build if errors are found.  First of all we see how to generate reports on a build without running a full <code>site</code> phase of maven. </p>
+                    
+                    <p>
+                    We can do this by adding the following configuration to the <code>build</code> section.
+                    <script src="https://gist.github.com/daisonp/1ca4a2aae8d3e7348a7abc291c623dd4.js"></script>
+                    </p>
+                        
+
+
                     
                 </div>
             </div>
