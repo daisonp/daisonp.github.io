@@ -1,6 +1,6 @@
 --- 
 layout: default 
-section: Section 3 - Extending unit test with Mock / Stubs
+section: Section 3 - Extending unit test with test doubles
 parent: Testing / QA
 parentUrl: /pages/tutorials/testing/index.html
 ---
@@ -23,4 +23,52 @@ parentUrl: /pages/tutorials/testing/index.html
         </ol>
     </div>
     <!-- /#sidebar-wrapper -->
+
+     <!-- Page Content -->
+     <div id="page-content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row" id="{{ site.data.tutorials-testing.[2].sub-sections[0].url }}">
+                <div class="col-lg-12">
+                    <h2>1. {{ site.data.tutorials-testing.[2].sub-sections[0].heading }} </h2>
+                    <p>
+                        In section 1 the methods under test were all quite simple and contained no external dependencies but when writing unit tests for more complex methods that interact with external resources we should still only be concerned with the code in the method and not with the correctness of the external resource.
+                    </p>
+                    <p> 
+                        So the question arises on how we can isolate the code we need to test without having to test the expected behaviour of external method / resources used within that method. The answer to that is to use a test double which replaces the external resource with a simplified version of that resource.
+                    </p>
+                    <p>
+                        To show how this is done we will work through a simple example that implements a method that randomly produces a line for a lottery ticket which contains 6 unique random numbers between 1 and 59.
+                    </p>
+                    <p>
+                        <script src="https://gist.github.com/daisonp/7fa94e481504bd81efe850ad6b8b336b.js"></script>
+                        <script src="https://gist.github.com/daisonp/a8232d17e025d96771172c30b488d819.js"></script>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" id="{{ site.data.tutorials-testing.[2].sub-sections[1].url }}">
+                <div class="col-lg-12">
+                    <h2>2. {{ site.data.tutorials-testing.[2].sub-sections[1].heading }} </h2>
+                    <p>A test stub is simply a small implementation of a program or interface that replaces the production version with a version that returns canned answers during testing.</p>
+                    <p><script src="https://gist.github.com/daisonp/f9e89364113f84a3ff303604fd4baf42.js"></script></p>
+                    <p>
+                        As can be seen from this test class a stub of a RandomNumberGenerator can easily be created that returns canned values instead of actually creating a sequence of random numbers.
+                    </p>
+                    <p>
+                        This type of solution is OK for small programs that have a limited number of methods but becomes cumbersome with more complex APIs.  For that very reason there are mocking frameworks to make faking external dependencies easier, the rest of this section will concentrate on using one of these mocking frameworks. 
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" id="{{ site.data.tutorials-testing.[2].sub-sections[2].url }}">
+                <div class="col-lg-12">
+                    <h2>3. {{ site.data.tutorials-testing.[2].sub-sections[2].heading }} </h2>
+                   
+                </div>
+            </div>
+
+        </div>
+     </div>
+
 </div>

@@ -39,7 +39,7 @@
       url: code-generators
 
 - section:
-  heading : Section 3 - Extending unit test with Mock / Stubs
+  heading : Section 3 - Extending unit test with test doubles
   url : /pages/tutorials/testing/section-3/index.html
   sub-sections:
     - heading: Introduction
