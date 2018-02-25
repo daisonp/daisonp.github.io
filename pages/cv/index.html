@@ -30,7 +30,11 @@ title: Richard Parry - Curriculum Vitae
 
         <section class="section summary-section">
             <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>
-            <div class="summary"> <p>{{ site.data.cv.profile }}</p> </div>
+            <div class="summary">  
+                {% for profile in site.data.cv.profile %}
+                    <p>{{ profile.paragraph }}</p>
+                {% endfor %}
+            </div>
         </section>
 
         <section class="section experiences-section">

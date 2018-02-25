@@ -25,10 +25,15 @@ qualifications:
     provider: University of Glamorgan
   - title: Certified Spring Professional
     provider: Pivotal
+  - title: MongoDB Certified Developer Associate
+    provider: MongoDB  
   - title: SC Cleared until 2022
     provider: MoD
 
-profile: I am a senior java developer with more than decade’s worth of experience who has been working primarily with the Spring and Hibernate frameworks for the last 5 years in an Agile environment.  I have considerable experience of the full development life cycle using both Agile and Waterfall methodologies along with good analytical, design and problem solving capabilities.
+profile: 
+  - paragraph: I am a senior software engineer with more than decade's worth of experience.  For the majority of my career to date I have been employed as a Java and SQL developer,  primarily creating enterprise solutions using the Spring and Hibernate frameworks with a SQL Server database. 
+  - paragraph: I have considerable experience of the full development life cycle and have been a team lead on a number of projects with the responsibility of delivering significant features to tight deadlines. Along with leaderships skills I have good analytical, design and problem solving capabilities and I am currently a member of the software architects group on a public sector account.
+
 
 experience:
     - title: Principal Developer &amp Software Architect
