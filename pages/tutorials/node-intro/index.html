@@ -1,0 +1,30 @@
+--- 
+layout: default 
+---
+<link rel="stylesheet" href="{{ "/css/tutorial.css" | prepend: site.baseurl | prepend: site.url }}">
+
+<div id="wrapper" class="extra-large-padding-top">
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row" id="introduction">
+                <div class="col-lg-12">
+                    <h1>Introduction to NodeJS</h1>
+                </div>
+            </div>
+            <div class="row" id="introduction">
+                <div class="col-lg-12">
+                    <h2>Introduction</h2>
+                    <p>This tutorial is an introduction into NodeJS, it will be broken down into the following sections;
+                        <ul>
+                            {% for section in site.data.node-intro %}
+                            <li>
+                                <a href="{{ section.url | prepend: site.base_url | prepend: site.url }}">{{ section.heading }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </p>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

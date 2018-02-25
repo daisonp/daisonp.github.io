@@ -1,0 +1,29 @@
+- section:
+  heading : Section 1 - Installation
+  url : /pages/tutorials/node-intro/section-1/index.html
+  sub-sections:
+    - heading: Introduction
+      url: introduction
+    - heading: Installing on Windows
+      url: windows
+    - heading: Installing on Mac
+      url: mac
+    - heading: Installing on Linux (Debian based distros)
+      url: linux
+    - heading: Docker 
+      url: docker
+
+- section:
+  heading: Section 2 - Node Package Manager
+  url: /pages/tutorials/node-intro/section-2/index.html
+  sub-sections:
+    - heading: Introduction
+      url: introduction
+    - heading: Code Coverage
+      url: code-coverage
+    - heading: FindBugs / SpotBugs
+      url: find-bugs
+    
+
+
+  

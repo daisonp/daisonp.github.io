@@ -17,3 +17,8 @@
 #  description: SQL
 #  url: /pages/tutorials/sql/index.html
 #  image_url: /img/tutorials/sql.png
+
+- name: Node
+  description: Introduction to NodeJS
+  url: /pages/tutorials/node-intro/index.html
+  image_url: /img/tutorials/node-intro/nodejs-logo-wide.png

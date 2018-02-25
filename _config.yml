@@ -6,14 +6,14 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Richard Parry - Ramblings of a grumpy old developer
+title: Richard Parry - Ramblings of an old developer
 copyright_name: Richard Parry
 email: richard.w.parry@gmail.com
 description: Java - Spring - SQL - Javascript - Node
 
 intro:
-  heading: Grumpy old developer
-  lead-in: Ramblings of a
+  heading: Old developer
+  lead-in: Ramblings of an
 
 navbar:
   brand: Daison P
