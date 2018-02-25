@@ -29,14 +29,14 @@
       url: code-coverage
     - heading: FindBugs / SpotBugs
       url: find-bugs
-    - heading: CheckStyle
-      url: check-style
-    - heading: PMD
-      url: pmd
-    - heading: Find Security Bugs
-      url: find-sec-bugs
-    - heading: Code generators
-      url: code-generators
+    # - heading: CheckStyle
+    #   url: check-style
+    # - heading: PMD
+    #   url: pmd
+    # - heading: Find Security Bugs
+    #   url: find-sec-bugs
+    # - heading: Code generators
+    #   url: code-generators
 
 - section:
   heading : Section 3 - Extending unit test with test doubles
@@ -46,23 +46,24 @@
       url: introduction
     - heading: Stubs
       url: stubs
-    - heading: Mocking
+    - heading: Mocks and Spies
       url: mocking
+    
 
   
-- section:
-  heading : Section 4 - Integration Testing
-  url : /pages/tutorials/testing/section-4/index.html
+# - section:
+#   heading : Section 4 - Integration Testing
+#   url : /pages/tutorials/testing/section-4/index.html
   
-- section:
-  heading : Section 5 - UI Testing
-  url : /pages/tutorials/testing/section-5/index.html
+# - section:
+#   heading : Section 5 - UI Testing
+#   url : /pages/tutorials/testing/section-5/index.html
   
-- section:
-  heading : Section 6 - Performance Testing
-  url : /pages/tutorials/testing/section-6/index.html
+# - section:
+#   heading : Section 6 - Performance Testing
+#   url : /pages/tutorials/testing/section-6/index.html
   
-- section:
-  heading : Section 7 - Security Testing
-  url : /pages/tutorials/testing/section-7/index.html
+# - section:
+#   heading : Section 7 - Security Testing
+#   url : /pages/tutorials/testing/section-7/index.html
   
